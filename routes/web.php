@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\user\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +34,6 @@ Route::get('/home', function () {
 
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-
 });
 
 
