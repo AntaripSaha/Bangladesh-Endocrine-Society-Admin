@@ -22,18 +22,14 @@ Route::get('/home', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/adlogin', function(){
-    return view('loginv2');
-})->name('adlogin');
+// Route::get('/adlogin', function(){
+//     return view('loginv2');
+// })->name('adlogin');
 
 
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::prefix('admin')->middleware('admin')->group(function () {
-   
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
-
-
 });
