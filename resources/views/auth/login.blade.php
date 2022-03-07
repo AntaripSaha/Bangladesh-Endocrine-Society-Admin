@@ -22,7 +22,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>BES</b>Login</a>
+      <a href="#" class="h1"><b>BES &nbsp;</b>Login</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
@@ -73,13 +73,13 @@
       </form>
 
 
-      <p class="mb-1">
+      {{-- <p class="mb-1">
         @if (Route::has('password.request'))
             <a class="btn btn-link" style="margin-left:-11px !important" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
         @endif
-      </p>
+      </p> --}}
       <p class="mb-0">
         <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
       </p>
