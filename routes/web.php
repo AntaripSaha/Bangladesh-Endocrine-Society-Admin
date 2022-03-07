@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\user\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,13 @@ Route::get('/home', function () {
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::prefix('user')->middleware('user')->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+});
+
+
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
