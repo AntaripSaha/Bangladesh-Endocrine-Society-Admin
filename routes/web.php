@@ -34,10 +34,13 @@ Route::get('/home', function () {
 
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::any('/information/add', [UserDashboardController::class, 'store'])->name('user.information');
 });
 
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
 });
