@@ -13,7 +13,7 @@ class DashboardController extends Controller
         return view('user.dashboard');
     }
 
-    public function store(Request $req){
+    public function personal_info_store(Request $req){
 
         $validate = $req->validate(
             [
@@ -37,11 +37,15 @@ class DashboardController extends Controller
             $personal_information->nid = $req->nid;
             $personal_information->address = $req->address;
             if($personal_information->save()){
-                return redirect()->back()->with('success', 'Information Saved...');
+                return redirect()->route('essential.information')->with('success', 'Information Saved...');
             }
         }
 
 
     }
-    
+
+    public function essential_info_store(){
+        return view('user.essential');
+    }
+
 }

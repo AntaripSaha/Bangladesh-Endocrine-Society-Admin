@@ -34,7 +34,8 @@ Route::get('/home', function () {
 
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-    Route::any('/information/add', [UserDashboardController::class, 'store'])->name('user.information');
+    Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
+    Route::any('/essential/info', [UserDashboardController::class, 'essential_info_store'])->name('essential.information');
 });
 
 
