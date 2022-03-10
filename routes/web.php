@@ -35,13 +35,26 @@ Route::get('/home', function () {
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
-    Route::any('/essential/info', [UserDashboardController::class, 'essential_info_store'])->name('essential.information');
+    Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
+    Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
 });
 
 
 Route::prefix('admin')->middleware('admin')->group(function () {
+
+    // Admin Route Start
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Admin Route End
+
+
+    // User Routes Start
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
+    Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
+   
+   
+    // User Routes End
+
 
 });
