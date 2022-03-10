@@ -103,7 +103,7 @@
 
         <!-- /.row -->
         <div class="row">
-          <div class="col-9">
+          <div class="col-10">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -120,6 +120,7 @@
                       <th>University</th>
                       <th>BMDC Reg. No.</th>
                       <th>BMDC Reg. Yr.</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -132,10 +133,11 @@
                       <td>{{$i}}</td>
                       <td>{{$info->degree}}</td>
                       <td>{{$info->passing_year}}</td>
-                      <td>{{$info->institutation}}</td>
-                      <td>{{$info->university}}</td>
+                      <td>{{Str::limit($info->institutation,15) }}</td>
+                      <td>{{Str::limit($info->university,15)}}</td>
                       <td>{{$info->bmdc_reg_no}}</td>
                       <td>{{$info->bmdc_reg_year}}</td>
+                      <td><a href="#">Delete</a></td>
                     </tr>
                     @php
                     $i = $i+1;
@@ -156,6 +158,8 @@
             <!-- /.card -->
           </div>
         </div>
+
+     
 
          <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
