@@ -1,15 +1,12 @@
 @extends('layouts.adminlte')
 @section('content')
-
       <div class="container-fluid">
         <div class="row">
-
         <form action="{{route('essential.information.add')}}" method="POST" enctype="multipart/form-data">
           @csrf
-
         <!-- /.row -->
         <div class="row">
-          <div class="col-10">
+          <div class="col-11">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -33,7 +30,6 @@
                     @php
                     $i = 1;
                     @endphp
-
                     @foreach($essential_infos as $info)
                     <tr>
                       <td>{{$i}}</td>
@@ -54,9 +50,7 @@
                     $i = $i+1;
                     @endphp
                     @endforeach
-                   
                   </tbody>
-                  
                 <!-- Button trigger modal -->
                 </table>
                 <button type="button" class="btn btn-outline-info btn-sm"  style="margin-left: 20px; margin-bottom: 20px; margin-top: 15px;" data-toggle="modal" data-target="#exampleModal">
@@ -68,10 +62,7 @@
             </div>
             <!-- /.card -->
           </div>
-        </div>
-
-     
-
+        </div>   
          <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
@@ -97,7 +88,14 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input class="form-control" name="degree" type="text"></td>
+                        <td>
+                          <!-- Example single danger button -->                        
+                          <select name="degree" class="form-control">
+                            @foreach ($degrees as $degree)
+                            <option value="{{$degree->degree}}">{{$degree->degree}}</option>
+                            @endforeach
+                          </select>
+                        </td>
                         <td><input class="form-control" name="passing_year" type="text"></td>
                         <td><input class="form-control" name="institutation" type="text"></td>
                         <td><input class="form-control" name="university" type="text"></td>
@@ -106,9 +104,7 @@
                       </tr>
                     </tbody>
                   </table>
-
                 </div>
-                
               </div>
               <div class="modal-footer">
                 <button class="btn btn-outline-success btn-sm" type="submit">ADD</button>
@@ -122,10 +118,8 @@
           Save All
         </button>
       </form>
-      
         </div>
       </div>
-
 @endsection      
 
 

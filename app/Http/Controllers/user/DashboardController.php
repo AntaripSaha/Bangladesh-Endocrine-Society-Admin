@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Essential_Category;
 use App\Models\Essential_Information;
 use App\Models\Personal_Information;
 use Illuminate\Http\Request;
@@ -47,10 +48,9 @@ class DashboardController extends Controller
     }
 
     public function essential_info(){
-
+        $degrees = Essential_Category::all();
         $essential_infos = Essential_Information::where('user_id', auth()->user()->id)->get();
-        return view('user.essential', compact('essential_infos'));
-
+        return view('user.essential', compact('essential_infos', 'degrees'));
     }
     public function essential_info_store(Request $req){
 
@@ -72,7 +72,6 @@ class DashboardController extends Controller
 
     }
     public function essential_info_delete($id){
-        return 'aaaaaaaaaaaaa';
        $essential_info = Essential_Information::find($id);
        $essential_info->delete();
        return redirect()->back()->with('warning', 'Successfully Deleted');

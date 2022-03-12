@@ -57,9 +57,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
     Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
     Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
-
-
-   
    
     // User Routes End
 
