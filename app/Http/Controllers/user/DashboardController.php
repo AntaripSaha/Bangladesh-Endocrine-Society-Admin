@@ -71,5 +71,12 @@ class DashboardController extends Controller
         }
 
     }
+    public function essential_info_delete($id){
+        return 'aaaaaaaaaaaaa';
+       $essential_info = Essential_Information::find($id);
+       $essential_info->delete();
+       return redirect()->back()->with('warning', 'Successfully Deleted');
+
+    }
 
 }
