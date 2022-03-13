@@ -35,8 +35,17 @@ Route::get('/home', function () {
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
+
+    // Essential Information
     Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
     Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
+    Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
+   
+    // Files
+    Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
+    Route::any('/file/add',[UserDashboardController::class, 'file'])->name('file.add');
+
+
 });
 
 
@@ -51,14 +60,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Admin Route End
 
 
-    // User Routes Start
-    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-    Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
-    Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
-    Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
-    Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
-   
-    // User Routes End
+    // // User Routes Start
+    // Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('admin.user.dashboard');
+    // Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('admin.user.information');
+    // Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('admin.essential.information');
+    // Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('admin.essential.information.add');
+    // Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('admin.essential.information.delete');
+    
+    // // Files 
+    // Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('admin.file.attach');
+    // Route::any('/file/add',[UserDashboardController::class, 'file'])->name('admin.file.add');
+
+    // // User Routes End
 
 
 });

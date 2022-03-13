@@ -25,7 +25,7 @@ class CreatePersonalInformationTable extends Migration
             $table->string('mother_name');
             $table->string('phone');
             $table->string('tel');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('nid');
             $table->longText('address');
             $table->timestamps();

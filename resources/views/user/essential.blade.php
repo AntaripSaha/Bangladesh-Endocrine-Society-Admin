@@ -9,7 +9,7 @@
           <div class="col-11">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">Essential Supporting Information</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -114,12 +114,14 @@
           </div>
         </div>
         <!-- /.row -->
-        <button class="btn btn-outline-success btn-sm"  style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;width: 85px;" type="submit">
-          Save All
-        </button>
+        <a href="{{route('file.attach')}}">
+          <button class="btn btn-outline-success btn-sm"  style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;width: 85px;" type="button">
+            Save All
+          </button>
+        </a>
       </form>
+
+    
         </div>
       </div>
-@endsection      
-
-
+@endsection

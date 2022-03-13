@@ -10,20 +10,18 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    
     public function index(){
         return view('user.dashboard');
     }
-
     public function personal_info_store(Request $req){
-
-        $validate = $req->validate(
+        $req->validate(
             [
-                'gender' => 'required'
+                'gender' => 'required',
+                'email' => 'required|unique:users,email'
             ],[
-                'gender.required' => 'Gender is Required'
+                'gender.required' => 'Gender is Required',
+                'email.required' => 'User Already Exists'
             ]);
-
         if($req){
             $personal_information = new Personal_Information;
             $personal_information->first_name = $req->first_name;
@@ -43,18 +41,13 @@ class DashboardController extends Controller
                 return redirect()->route('essential.information')->with('success', 'Information Saved...');
             }
         }
-
-
     }
-
     public function essential_info(){
         $degrees = Essential_Category::all();
         $essential_infos = Essential_Information::where('user_id', auth()->user()->id)->get();
         return view('user.essential', compact('essential_infos', 'degrees'));
     }
     public function essential_info_store(Request $req){
-
-        // return $req;
         $essential_info = new Essential_Information;
         $essential_info->user_id = auth()->user()->id;
         $essential_info->degree = $req->degree;
@@ -64,18 +57,17 @@ class DashboardController extends Controller
         $essential_info->bmdc_reg_no = $req->bmdc_reg_no;
         $essential_info->bmdc_reg_year = $req->bmdc_reg_year;
 
-        
-
         if($essential_info->save()){
             return redirect()->back()->with('success', 'Successfully Added The Information');
         }
-
     }
     public function essential_info_delete($id){
        $essential_info = Essential_Information::find($id);
        $essential_info->delete();
        return redirect()->back()->with('warning', 'Successfully Deleted');
-
+    }
+    public function file(Request $req){
+        return view('user.files');
     }
 
 }
