@@ -41,9 +41,12 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
     Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
    
-    // Files
+    // Files to Current Appoinment
     Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
-    Route::any('/file/add',[UserDashboardController::class, 'file'])->name('file.add');
+    Route::any('/file/add',[UserDashboardController::class, 'file_add'])->name('file.add');
+
+    // Payment Section
+    Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
 
 
 });

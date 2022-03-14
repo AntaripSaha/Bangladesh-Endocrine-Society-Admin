@@ -69,5 +69,11 @@ class DashboardController extends Controller
     public function file(Request $req){
         return view('user.files');
     }
+    public function file_add(Request $req){
+        return 'aaa';
+    }
+    public function payment(){
+        return view('user.payment');
+    }
 
 }
