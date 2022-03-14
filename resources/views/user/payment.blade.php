@@ -77,7 +77,7 @@
                 <div class="col-12">
                   <div class="card card-info">
                     <div class="card-header">
-                      <h3 class="card-title">Payments Information of Membership Fee-</h3>
+                      <h3 class="card-title">Payments Information of Membership Fee</h3>
                     </div>
                     <p style="margin-left: 20px;margin-top: 10px;">
                       Must attach a copy of money receipt (PDF or JPEG).
@@ -93,10 +93,10 @@
                       <tbody>
                         <tr>
                           <td>
-                              <input type="date" class="form-control">
+                            <input type="date" class="form-control">
                           </td>
                           <td>
-                              <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" required>
                           </td>
                           <td>
                             <input type="file">
