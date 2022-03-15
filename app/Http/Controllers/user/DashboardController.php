@@ -75,5 +75,7 @@ class DashboardController extends Controller
     public function payment(){
         return view('user.payment');
     }
-
+    public function area(){
+        return view('user.area');
+    }
 }

@@ -47,6 +47,8 @@ Route::prefix('user')->middleware('user')->group(function () {
 
     // Payment Section
     Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
+    // Final Section
+    Route::any('/area_clinical_interests', [UserDashboardController::class, 'area'])->name('area');
 
 
 });
@@ -75,6 +77,5 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::any('/file/add',[UserDashboardController::class, 'file'])->name('admin.file.add');
 
     // // User Routes End
-
 
 });

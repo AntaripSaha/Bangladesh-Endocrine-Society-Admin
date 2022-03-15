@@ -2,7 +2,6 @@
 @section('content')
       <div class="container-fluid">
         <div class="row">
-
         <form action="{{route('essential.information.add')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <!-- /.row -->
