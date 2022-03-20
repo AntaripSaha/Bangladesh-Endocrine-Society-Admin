@@ -2,8 +2,6 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-    <form action="{{route('area.store')}}" method="POST">
-      @csrf
       <!-- /.row -->
       <div class="row">
         <div class="col-12">
@@ -17,8 +15,7 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Name Areas</th>
-                    <th>Action</th>
+                    <th>Areas Sub Categories</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -27,16 +24,8 @@
                   @endphp
                   <tr>
                     @foreach($areas as $area)
-                    <td>
-                      <input type="checkbox" name="area[]" value="{{$area->id}}">
-                    </td>
                     <td>{{$i}}</td>
                     <td>{{$area->name}}</td>
-                    <td>
-                      <a type="button" class="btn btn-outline-info btn-sm" href="{{route('area.details', ['id'=>$area->id])}}">
-                        View
-                      </a> 
-                    </td>
                   </tr>
                     @php
                     $i = $i+1;
@@ -45,6 +34,11 @@
                 </tbody>
               <!-- Button trigger modal -->
               </table>
+              <a href="{{route('area')}}">
+                <button type="button" class="btn btn-outline-info btn-sm" style="width: 150px;margin-left: 20px;margin-bottom: 20px;margin-top: 20px;">
+                    Go Back
+                </button>
+              </a>
             </div>
             <!-- /.card-body -->
           </div>
@@ -52,11 +46,7 @@
         </div>
       </div>   
       <!-- /.row -->
-        <button class="btn btn-outline-success btn-sm"  style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;width: 85px;" type="submit">
-          Save All
-        </button>
       </a>
-    </form>
     </div>
   </div> 
 @endsection

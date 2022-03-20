@@ -40,7 +40,7 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
     Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
     Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
-   
+
     // Files to Current Appoinment
     Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
     Route::any('/file/add',[UserDashboardController::class, 'file_add'])->name('file.add');
@@ -49,7 +49,8 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
     // Final Section
     Route::any('/area_clinical_interests', [UserDashboardController::class, 'area'])->name('area');
-
+    Route::any('/area_clinical_interests/store', [UserDashboardController::class, 'area_store'])->name('area.store');
+    Route::any('/area_clinical_interests/details/{id}', [UserDashboardController::class, 'area_details'])->name('area.details');
 
 });
 
