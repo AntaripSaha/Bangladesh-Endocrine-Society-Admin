@@ -112,9 +112,8 @@
                         <thead>
                           <tr>
                             <th>S/L</th>
-                            <th>Institute/Hospital</th>
-                            <th>From</th>
-                            <th>To</th>
+                            <th>Current Organization</th>
+                            <th>Position</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -124,8 +123,7 @@
                           <tr>
                             <td>{{$i}}</td>
                             <td>Dhaka Medical College & Hospital</td>
-                            <td>20th March 2016</td>
-                            <td>20th March 2022</td>
+                            <td>Lecturer</td>
                           </tr>
                           @php
                           $i = $i+1;
