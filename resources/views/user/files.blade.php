@@ -354,7 +354,7 @@
                 </div>
               </div>
               <!-- Files End-->
-            <button type="submit" class="btn btn-outline-success btn-sm" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
+            <button type="submit" class="btn btn-outline-success btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
               Save All
             </button>
           </form>

@@ -120,6 +120,10 @@
         if(!confirm("Are You Sure to Delete This"))
          event.preventDefault();
     }
+    function savefunction() {
+        if(!confirm("Please Recheck All before Save All. Once Save, You Can Not Undo"))
+         event.preventDefault();
+    }
 </script>
 
 <!-- jQuery -->

@@ -12,10 +12,10 @@ use App\Models\Associate_Member;
 use App\Models\Current_Appoinment;
 use App\Models\Current_Organization;
 use App\Models\File_Upload;
+use App\Models\Payments_Info;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
 
 class DashboardController extends Controller
 {
@@ -128,7 +128,6 @@ class DashboardController extends Controller
     public function file_document_add(Request $req){
         $file_upload = new File_Upload;
         $file_upload->user_id = auth()->user()->id;
-
         if($req->file('nid')){
             $file = $req->file('nid');
             Storage::putFile('public/file', $file);
@@ -150,16 +149,35 @@ class DashboardController extends Controller
             $file_upload->active_perticipation =  "storage/file/" . $file->hashName();
         }
         if($file_upload->save()){
-            return redirect()->back()->with('success', 'Files Uploaded Successfully');
+            return redirect()->route('payment')->with('success', 'All Data Saved Successfully.');
         }
     }
     public function payment(){
         return view('user.payment');
     }
+    public function payment_store(Request $req){
+        $payments_infos = new Payments_Info;
+        $payments_infos->membership_category = $req->checkbox; 
+        $payments_infos->date = $req->date; 
+        $payments_infos->trx_id = $req->trx_id; 
+        $payments_infos->user_id = auth()->user()->id;
+        if($req->file('file')){
+            $file = $req->file('file');
+            Storage::putFile('public/payment_receipt', $file);
+            $payments_infos->file = "storage/payment_receipt/".$file->hashName();
+        }
+        if($payments_infos->save()){
+            return redirect()->route('area')->with('success', 'All Data Saved Successfully.');
+        }        
+    }
     public function area(){
        $areas = Area_Category::All();
        $area_sub =  Area_Sub_Category::All();
        return view('user.area', compact('areas', 'area_sub'));
+    }
+    public function area_details($id){
+        $areas = Area_Sub_Category::where('area_category',$id)->select('name')->get();
+        return view('user.area_details', compact('areas'));
     }
     public function area_store(Request $request){
         $areas = new User_Area_of_Interests;
@@ -179,12 +197,12 @@ class DashboardController extends Controller
                 ));
             }
             $areas::insert($all); 
-            return redirect()->back()->with('success', 'Data Saved');
+            return redirect()->route('final')->with('success', 'Data Saved');
         }
     }
-    public function area_details( $id){
-        $areas = Area_Sub_Category::where('area_category',$id)->select('name')->get();
-        return view('user.area_details', compact('areas'));
+    public function final(){
+        return view('user.final');
     }
+
 
 }

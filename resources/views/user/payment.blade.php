@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <form action="#">
+        <form action="{{route('payment.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
               <!-- Files Start-->
               <div class="row">
@@ -29,7 +29,7 @@
                           <td>1</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="r1" checked>
+                                <input type="radio" id="radioPrimary1" name="checkbox" value="Package One" checked>
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -42,7 +42,7 @@
                           <td>2</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="r1" >
+                                <input type="radio" id="radioPrimary1" value="Package Two" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -55,7 +55,7 @@
                           <td>3</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="r1" >
+                                <input type="radio" id="radioPrimary1" value="Package Three" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -93,13 +93,13 @@
                       <tbody>
                         <tr>
                           <td>
-                            <input type="date" class="form-control">
+                            <input type="date" name="date" class="form-control">
                           </td>
                           <td>
-                            <input type="text" class="form-control" required>
+                            <input type="text" name="trx_id" class="form-control" required>
                           </td>
                           <td>
-                            <input type="file">
+                            <input type="file" name="file">
                           </td>
                         </tr>
                       </tbody>
@@ -110,7 +110,7 @@
                 </div>
               </div>
               <!-- Files End-->
-            <button type="submit" class="btn btn-outline-success btn-sm" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
+            <button type="submit" class="btn btn-outline-success btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
               Save All
             </button>
         </form>
