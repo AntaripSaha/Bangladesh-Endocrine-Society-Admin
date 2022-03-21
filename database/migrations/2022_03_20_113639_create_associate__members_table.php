@@ -18,6 +18,7 @@ class CreateAssociateMembersTable extends Migration
             $table->string('institute');
             $table->string('from');
             $table->string('to');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

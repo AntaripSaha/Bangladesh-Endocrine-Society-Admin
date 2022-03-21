@@ -18,6 +18,7 @@ class CreateCurrentAppoinmentsTable extends Migration
             $table->string('designation');
             $table->string('hospital');
             $table->string('from');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

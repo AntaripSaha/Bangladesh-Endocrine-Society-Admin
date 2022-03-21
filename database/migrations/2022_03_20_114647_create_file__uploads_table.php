@@ -19,6 +19,7 @@ class CreateFileUploadsTable extends Migration
             $table->string('bmdc_reg_certificate');
             $table->string('certificate_all_degree');
             $table->string('active_perticipation');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

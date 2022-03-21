@@ -15,9 +15,11 @@ class CreatePaymentsInfosTable extends Migration
     {
         Schema::create('payments__infos', function (Blueprint $table) {
             $table->id();
+            $table->string('membership_category');
             $table->string('date');
             $table->string('trx_id');
             $table->string('file');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

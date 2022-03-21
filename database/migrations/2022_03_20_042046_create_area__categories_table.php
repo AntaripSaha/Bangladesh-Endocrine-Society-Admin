@@ -16,7 +16,6 @@ class CreateAreaCategoriesTable extends Migration
         Schema::create('area__categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('area_sub_category');
             $table->timestamps();
         });
     }

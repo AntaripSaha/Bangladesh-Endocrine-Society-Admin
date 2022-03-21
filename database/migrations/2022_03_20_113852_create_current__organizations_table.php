@@ -17,6 +17,7 @@ class CreateCurrentOrganizationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('position');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
