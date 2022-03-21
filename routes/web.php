@@ -59,6 +59,10 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::any('/file/appointment/delete/{id}',[UserDashboardController::class, 'file_current_appointment_delete'])->name('file.current.appointment.delete');
     // Current Appointment/Position End
 
+    // File Documents Start
+    Route::any('/file/document/add',[UserDashboardController::class, 'file_document_add'])->name('file.document.add');
+    // File Documents End
+
     // Payment Section
     Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
     // Final Section

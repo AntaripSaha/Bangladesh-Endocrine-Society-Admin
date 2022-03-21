@@ -296,7 +296,7 @@
               </div>
               {{-- Current Membership in other Organization End --}}
           </form>
-          <form action="{{route('file.associate.add')}}" method="POST" enctype="multipart/form-data">
+          <form action="{{route('file.document.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
               <!-- Files Start-->
               <div class="row">
@@ -321,21 +321,21 @@
                           <td>1</td>
                           <td>National ID Card.</td>
                           <td>
-                            <input type="file" required>
+                            <input type="file" name="nid" required>
                           </td>
                         </tr>
                         <tr>
                           <td>2</td>
                           <td>BMDC Registration Certificate.</td>
                           <td>
-                            <input type="file">
+                            <input type="file" name="bmdc">
                           </td>
                         </tr>
                         <tr>
                           <td>3</td>
                           <td>Certificates of all Degree/Diploma<br>Fellowship/Postgraduation.</td>
                           <td>
-                            <input type="file" required>
+                            <input type="file" name="degree" required>
                           </td>
                         </tr>
                         <tr>
@@ -343,7 +343,7 @@
                           <td>Proof for active participation in the<br>field of endocrinology or research
                             <br>activity with endocrine disorders <br>(for associates members) </td>
                           <td>
-                            <input type="file">
+                            <input type="file" name="active_perticipation">
                           </td>
                         </tr>
                       </tbody>

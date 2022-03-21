@@ -16,9 +16,9 @@ class CreateFileUploadsTable extends Migration
         Schema::create('file__uploads', function (Blueprint $table) {
             $table->id();
             $table->string('nid');
-            $table->string('bmdc_reg_certificate');
+            $table->string('bmdc_reg_certificate')->nullable();
             $table->string('certificate_all_degree');
-            $table->string('active_perticipation');
+            $table->string('active_perticipation')->nullable();
             $table->string('user_id');
             $table->timestamps();
         });

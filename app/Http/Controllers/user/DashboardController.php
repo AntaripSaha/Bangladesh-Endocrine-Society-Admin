@@ -11,8 +11,11 @@ use App\Models\Area_Sub_Category;
 use App\Models\Associate_Member;
 use App\Models\Current_Appoinment;
 use App\Models\Current_Organization;
+use App\Models\File_Upload;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class DashboardController extends Controller
 {
@@ -122,7 +125,34 @@ class DashboardController extends Controller
         $current_appoinment->delete();
         return redirect()->back()->with('danger', 'Data Removed');
     }
-    
+    public function file_document_add(Request $req){
+        $file_upload = new File_Upload;
+        $file_upload->user_id = auth()->user()->id;
+
+        if($req->file('nid')){
+            $file = $req->file('nid');
+            Storage::putFile('public/file', $file);
+            $file_upload->nid =  "storage/file/" . $file->hashName();
+        }
+        if($req->file('bmdc')){
+            $file = $req->file('bmdc');
+            Storage::putFile('public/file', $file);
+            $file_upload->bmdc_reg_certificate =  "storage/file/" . $file->hashName();
+        }
+        if($req->file('degree')){
+            $file = $req->file('degree');
+            Storage::putFile('public/file', $file);
+            $file_upload->certificate_all_degree =  "storage/file/" . $file->hashName();
+        }
+        if($req->file('active_perticipation')){
+            $file = $req->file('active_perticipation');
+            Storage::putFile('public/file', $file);
+            $file_upload->active_perticipation =  "storage/file/" . $file->hashName();
+        }
+        if($file_upload->save()){
+            return redirect()->back()->with('success', 'Files Uploaded Successfully');
+        }
+    }
     public function payment(){
         return view('user.payment');
     }
