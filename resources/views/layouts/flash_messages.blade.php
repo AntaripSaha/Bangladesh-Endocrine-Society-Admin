@@ -44,6 +44,4 @@
          <div>{{$error}}</div>
      @endforeach 
 </div>
-
-
 @endif

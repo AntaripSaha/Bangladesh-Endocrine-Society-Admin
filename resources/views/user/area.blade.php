@@ -52,7 +52,7 @@
         </div>
       </div>   
       <!-- /.row -->
-        <button class="btn btn-outline-success btn-sm"  style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;width: 85px;" type="submit">
+        <button class="btn btn-outline-success btn-sm" onclick="return savefunction();"  style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;width: 85px;" type="submit">
           Save All
         </button>
       </a>

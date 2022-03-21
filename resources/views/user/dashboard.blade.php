@@ -137,9 +137,11 @@
         <button type="submit" class="btn btn-outline-info" style="margin-left: 126px; width:140px !important;">
           Submit
         </button>
-
-
-
+        <a href="{{route('essential.information')}}">
+          <button class="btn btn-outline-success" style="margin-left: 126px; width:140px !important;" type="button">
+            Next Page
+          </button>
+        </a>
 
       </div>
       {{-- card body --}}

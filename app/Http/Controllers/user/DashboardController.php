@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $req->validate(
             [
                 'gender' => 'required',
-                'email' => 'required|unique:users,email'
+                'email' => 'required|unique:personal__information,email'
             ],[
                 'gender.required' => 'Gender is Required',
                 'email.required' => 'User Already Exists'
@@ -126,6 +126,12 @@ class DashboardController extends Controller
         return redirect()->back()->with('danger', 'Data Removed');
     }
     public function file_document_add(Request $req){
+        $req->validate(
+            [
+                'user_id' => 'required|unique:file__uploads,user_id'
+            ],[
+                'user_id.required' => 'User Already Exists'
+            ]);
         $file_upload = new File_Upload;
         $file_upload->user_id = auth()->user()->id;
         if($req->file('nid')){
@@ -156,6 +162,12 @@ class DashboardController extends Controller
         return view('user.payment');
     }
     public function payment_store(Request $req){
+        $req->validate(
+            [
+                'user_id' => 'required|unique:file__uploads,user_id'
+            ],[
+                'user_id.required' => 'User Already Exists'
+            ]);
         $payments_infos = new Payments_Info;
         $payments_infos->membership_category = $req->checkbox; 
         $payments_infos->date = $req->date; 
@@ -193,7 +205,6 @@ class DashboardController extends Controller
                 array_push($all, array(
                 'user_id' => auth()->user()->id,
                 'area_id' => $request->area[$key],
-                'area_sub_id' => $request->area[$key]
                 ));
             }
             $areas::insert($all); 
@@ -203,6 +214,4 @@ class DashboardController extends Controller
     public function final(){
         return view('user.final');
     }
-
-
 }

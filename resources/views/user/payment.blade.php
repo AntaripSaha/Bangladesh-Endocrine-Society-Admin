@@ -93,7 +93,8 @@
                       <tbody>
                         <tr>
                           <td>
-                            <input type="date" name="date" class="form-control">
+                            <input type="date" name="date" class="form-control" required>
+                            <input type="hidden" name="user_id" class="form-control" value="{{auth()->user()->id}}" >
                           </td>
                           <td>
                             <input type="text" name="trx_id" class="form-control" required>
@@ -110,9 +111,14 @@
                 </div>
               </div>
               <!-- Files End-->
-            <button type="submit" class="btn btn-outline-success btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
+            <button type="submit" class="btn btn-outline-info btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
               Save All
             </button>
+            <a href="{{route('area')}}">
+              <button class="btn btn-outline-success btn-sm" style="margin-left: 19px;width: 110px;margin-bottom: 50px; !important;" type="button">
+                Next Page
+              </button>
+            </a>
         </form>
     </div>
 </div>

@@ -17,7 +17,6 @@ class CreateUserAreaOfInterestsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('area_id');
-            $table->string('area_sub_id');
             $table->timestamps();
         });
     }
