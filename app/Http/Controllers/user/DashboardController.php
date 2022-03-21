@@ -8,6 +8,9 @@ use App\Models\Essential_Information;
 use App\Models\Personal_Information;
 use App\Models\Area_Category;
 use App\Models\Area_Sub_Category;
+use App\Models\Associate_Member;
+use App\Models\Current_Appoinment;
+use App\Models\Current_Organization;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Http\Request;
 
@@ -70,11 +73,56 @@ class DashboardController extends Controller
        return redirect()->back()->with('warning', 'Successfully Deleted');
     }
     public function file(Request $req){
-        return view('user.files');
+        $current_appoinments = Current_Appoinment::where('user_id', auth()->user()->id)->get();
+        $associate_members = Associate_Member::where('user_id', auth()->user()->id)->get();
+        $current_organizations = Current_Organization::where('user_id', auth()->user()->id)->get();
+        return view('user.files', compact('associate_members','current_organizations','current_appoinments'));
     }
-    public function file_add(Request $req){
-        return 'aaa';
+    public function file_associate_add(Request $req){
+        $associate_members = new Associate_Member;
+        $associate_members->institute = $req->institute;
+        $associate_members->from = $req->from;
+        $associate_members->to = $req->to;
+        $associate_members->user_id = auth()->user()->id;
+        if($associate_members->save()){
+            return redirect()->back()->with('success', 'Data Stored');
+        }
     }
+    public function file_associate_delete($id){
+        $associate_members = Associate_Member::find($id);
+        $associate_members->delete();
+        return redirect()->back()->with('danger', 'Data Removed');
+    }
+    public function file_current_organization_add(Request $req){
+        $current_organization = new Current_Organization;
+        $current_organization->name = $req->organization;
+        $current_organization->position = $req->position;
+        $current_organization->user_id = auth()->user()->id;
+        if($current_organization->save()){
+            return redirect()->back()->with('success', 'Data Stored');
+        }
+    }
+    public function file_current_organization_delete($id){
+        $current_organization = Current_Organization::find($id);
+        $current_organization->delete();
+        return redirect()->back()->with('danger', 'Data Removed');
+    }
+    public function file_current_appointment_add(Request $req){
+        $current_appoinment = new Current_Appoinment;
+        $current_appoinment->designation = $req->designation;
+        $current_appoinment->hospital = $req->hospital;
+        $current_appoinment->from = $req->from;
+        $current_appoinment->user_id = auth()->user()->id;
+        if($current_appoinment->save()){
+            return redirect()->back()->with('success', 'Data Stored');
+        }
+    }
+    public function file_current_appointment_delete($id){
+        $current_appoinment = Current_Appoinment::find($id);
+        $current_appoinment->delete();
+        return redirect()->back()->with('danger', 'Data Removed');
+    }
+    
     public function payment(){
         return view('user.payment');
     }

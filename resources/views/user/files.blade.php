@@ -2,7 +2,7 @@
 @section('content')
       <div class="container-fluid">
         <div class="row">
-          <form action="{{route('file.add')}}" method="POST" enctype="multipart/form-data">
+          <form action="{{route('file.associate.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
               <!-- /.row -->
               <div class="row">
@@ -12,8 +12,8 @@
                       <h3 class="card-title">For Associates Members</h3>
                     </div>
                     <p class="card-body">
-                    Active participation in the field of endocrinology or <br> research
-                      activity with endocrine disorders. 
+                    Active participation in the field of endocrinology or research
+                      activity with <br> endocrine disorders. 
                     
                     </p>
                     <!-- /.card-header -->
@@ -25,21 +25,31 @@
                             <th>Institute/Hospital</th>
                             <th>From</th>
                             <th>To</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           @php
                           $i = 1;
                           @endphp
+                          @foreach($associate_members as $member)
                           <tr>
                             <td>{{$i}}</td>
-                            <td>Dhaka Medical College & Hospital</td>
-                            <td>20th March 2016</td>
-                            <td>20th March 2022</td>
+                            <td>{{ Str::limit($member->institute, 28) }}</td>
+                            <td>{{$member->from}}</td>
+                            <td>{{$member->to}}</td>
+                            <td>
+                              <a href="{{route('file.associate.delete', ['id'=>$member->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
+                            </td>
                           </tr>
                           @php
                           $i = $i+1;
                           @endphp
+                          @endforeach
                         </tbody>
                       <!-- Button trigger modal -->
                       </table>
@@ -92,10 +102,8 @@
                 </div>
               </div>
           </form>
-          <form action="#">
+          <form action="{{route('file.current.organization.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
-
-
               {{-- Current Membership in other Organization Start --}}
               <div class="row">
                 <div class="col-12">
@@ -114,20 +122,30 @@
                             <th>S/L</th>
                             <th>Current Organization</th>
                             <th>Position</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           @php
                           $i = 1;
                           @endphp
+                          @foreach($current_organizations as $current_organization)
                           <tr>
                             <td>{{$i}}</td>
-                            <td>Dhaka Medical College & Hospital</td>
-                            <td>Lecturer</td>
+                            <td>{{Str::limit( $current_organization->name, 40)}}</td>
+                            <td>{{$current_organization->position}}</td>
+                            <td>
+                              <a href="{{route('file.current.organization.delete', ['id'=>$current_organization->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
+                            </td>
                           </tr>
                           @php
                           $i = $i+1;
                           @endphp
+                          @endforeach
                         </tbody>
                       <!-- Button trigger modal -->
                       </table>
@@ -180,7 +198,7 @@
 
 
           </form>
-          <form action="#">
+          <form action="{{route('file.current.appointment.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
               {{-- Current Membership in other Organization Start --}}
               <div class="row">
@@ -198,22 +216,34 @@
                         <thead>
                           <tr>
                             <th>S/L</th>
-                            <th>Institute/Hospital/Workplace</th>
+                            <th>Workplace</th>
+                            <th>Designation</th>
                             <th>From</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           @php
                           $i = 1;
                           @endphp
+                          @foreach($current_appoinments as $current_appoinment)
                           <tr>
                             <td>{{$i}}</td>
-                            <td>Dhaka Medical College & Hospital</td>
-                            <td>20th March 2016</td>
+                            <td>{{Str::limit($current_appoinment->hospital,20)}}</td>
+                            <td>{{Str::limit($current_appoinment->designation,15)}}</td>
+                            <td>{{$current_appoinment->from}}</td>
+                            <td>
+                              <a href="{{route('file.current.appointment.delete', ['id'=>$current_appoinment->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
+                            </td>
                           </tr>
                           @php
                           $i = $i+1;
                           @endphp
+                          @endforeach
                         </tbody>
                       <!-- Button trigger modal -->
                       </table>
@@ -249,8 +279,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input class="form-control" name="organization" type="text"></td>
-                              <td><input class="form-control" name="institute" type="text"></td>
+                              <td><input class="form-control" name="designation" type="text"></td>
+                              <td><input class="form-control" name="hospital" type="text"></td>
                               <td><input class="form-control" name="from" type="date"></td>
                             </tr>
                           </tbody>
@@ -266,7 +296,7 @@
               </div>
               {{-- Current Membership in other Organization End --}}
           </form>
-          <form action="#">
+          <form action="{{route('file.associate.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
               <!-- Files Start-->
               <div class="row">

@@ -43,7 +43,21 @@ Route::prefix('user')->middleware('user')->group(function () {
 
     // Files to Current Appoinment
     Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
-    Route::any('/file/add',[UserDashboardController::class, 'file_add'])->name('file.add');
+    
+    // Associates Members Start
+    Route::any('/file/associate/add',[UserDashboardController::class, 'file_associate_add'])->name('file.associate.add');
+    Route::any('/file/associate/delete/{id}',[UserDashboardController::class, 'file_associate_delete'])->name('file.associate.delete');
+    // Associates Members End
+
+    // Current Membership in other Organization Start
+    Route::any('/file/current/add',[UserDashboardController::class, 'file_current_organization_add'])->name('file.current.organization.add');
+    Route::any('/file/current/delete/{id}',[UserDashboardController::class, 'file_current_organization_delete'])->name('file.current.organization.delete');
+    // Current Membership in other Organization End
+
+    // Current Appointment/Position Start
+    Route::any('/file/appointment/add',[UserDashboardController::class, 'file_current_appointment_add'])->name('file.current.appointment.add');
+    Route::any('/file/appointment/delete/{id}',[UserDashboardController::class, 'file_current_appointment_delete'])->name('file.current.appointment.delete');
+    // Current Appointment/Position End
 
     // Payment Section
     Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
