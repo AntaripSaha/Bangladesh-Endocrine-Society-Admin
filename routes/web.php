@@ -98,11 +98,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('admin.essential.information');
     // Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('admin.essential.information.add');
     // Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('admin.essential.information.delete');
-    
     // // Files 
     // Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('admin.file.attach');
     // Route::any('/file/add',[UserDashboardController::class, 'file'])->name('admin.file.add');
-
     // // User Routes End
 
 });
