@@ -192,15 +192,18 @@ class DashboardController extends Controller
         return view('user.area_details', compact('areas'));
     }
     public function area_store(Request $request){
-        $area = User_Area_of_Interests::where('user_id', auth()->user()->id)->count();
-        if($area == 0 || $area <= 4  ){
+        $existing = User_Area_of_Interests::where('user_id', auth()->user()->id)->count();
+        if($existing == 0 || $existing <= 5  ){
             $areas = new User_Area_of_Interests;
             $all = array();
             $i = 0;
+            if($request->area == 0){
+                return redirect()->route('final')->with('success', 'Data Saved');
+            }
             foreach($request->area as $key=>$area){
                 $i = $i+1;
             }
-            if($i+$area > 5){
+            if($i+$existing > 5){
                 return redirect()->back()->with('error', 'You Can Not Add More Than 5');
             }else{
                 foreach( $request->area as $key=>$area){
