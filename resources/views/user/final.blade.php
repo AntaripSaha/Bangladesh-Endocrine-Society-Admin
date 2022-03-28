@@ -22,7 +22,7 @@
                     Thank You.
                 </p>
             </h2>
-            <h5>All Your Information Saved Successfully</h5>
+            <h5>All Your Information Saved Successfully. Please Wait For The Admin's Confirmation</h5>
         </div>
     </div>
   </div>
