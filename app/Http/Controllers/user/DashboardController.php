@@ -192,23 +192,28 @@ class DashboardController extends Controller
         return view('user.area_details', compact('areas'));
     }
     public function area_store(Request $request){
-        $areas = new User_Area_of_Interests;
-        $all = array();
-        $i = 0;
-        foreach($request->area as $key=>$area){
-            $i = $i+1;
-        }
-        if($i>5){
-            return redirect()->back()->with('error', 'You Can Not Add More Than 5');
-        }else{
-            foreach( $request->area as $key=>$area){
-                array_push($all, array(
-                'user_id' => auth()->user()->id,
-                'area_id' => $request->area[$key],
-                ));
+        $area = User_Area_of_Interests::where('user_id', auth()->user()->id)->count();
+        if($area == 0 || $area <= 4  ){
+            $areas = new User_Area_of_Interests;
+            $all = array();
+            $i = 0;
+            foreach($request->area as $key=>$area){
+                $i = $i+1;
             }
-            $areas::insert($all); 
-            return redirect()->route('final')->with('success', 'Data Saved');
+            if($i+$area > 5){
+                return redirect()->back()->with('error', 'You Can Not Add More Than 5');
+            }else{
+                foreach( $request->area as $key=>$area){
+                    array_push($all, array(
+                    'user_id' => auth()->user()->id,
+                    'area_id' => $request->area[$key],
+                    ));
+                }
+                $areas::insert($all); 
+                return redirect()->route('final')->with('success', 'Data Saved');
+            }
+        }else{
+            return redirect()->back()->with('error', 'You Can Not Add More Than 5');
         }
     }
     public function final(){
