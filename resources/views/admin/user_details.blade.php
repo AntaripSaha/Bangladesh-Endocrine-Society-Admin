@@ -234,7 +234,7 @@
                           @foreach($area_name as $key=>$information)
                           <tr>
                             <td style="width: 25%">{{$i}}</td>
-                            <td style="width: 20%">{{$information[$key]->name}}</td>
+                            <td style="width: 20%">{{$information[0]->name}}</td>
                           </tr>
                           @php
                           $i = $i+1;

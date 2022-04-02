@@ -42,11 +42,11 @@ class DashboardController extends Controller
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
-        return $area_name[0];
+         $area_name[0];
 
 
         return view('admin.user_details', compact('personal_information', 'essential_informations', 
-        'associate_members', 'current_organizations', 'current_appoinments'));
+        'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
     // public function essential_category(){
     //     $degrees = Essential_Category::all();
