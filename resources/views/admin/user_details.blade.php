@@ -99,7 +99,7 @@
                   <!-- /.card -->
                 </div>
                 <div class="col-12">
-                  <div class="card card-info">
+                  <div class="card card-success">
                     <div class="card-header">
                       <h3 class="card-title">Associate Members</h3>
                     </div>
@@ -138,7 +138,7 @@
                   <!-- /.card -->
                 </div>
                 <div class="col-12">
-                  <div class="card card-info">
+                  <div class="card card-warning">
                     <div class="card-header">
                       <h3 class="card-title">Current Membership in Other Organization</h3>
                     </div>
@@ -175,7 +175,7 @@
                   <!-- /.card -->
                 </div>
                 <div class="col-12">
-                  <div class="card card-info">
+                  <div class="card card-secondary">
                     <div class="card-header">
                       <h3 class="card-title">Current Appoinment</h3>
                     </div>
@@ -214,7 +214,7 @@
                   <!-- /.card -->
                 </div>
                 <div class="col-12">
-                  <div class="card card-info">
+                  <div class="card card-success">
                     <div class="card-header">
                       <h3 class="card-title">Area of Clynical Interests</h3>
                     </div>
