@@ -87,6 +87,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard/{id}/{status}', [DashboardController::class, 'status'])->name('admin.dashboard.status');
+    // User Information 
+    Route::any('/user/details/{id}', [DashboardController::class, 'user_details'])->name('admin.user.details');
     // Admin Route End
 
     // // User Routes Start
