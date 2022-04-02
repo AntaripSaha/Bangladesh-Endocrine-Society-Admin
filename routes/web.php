@@ -33,9 +33,10 @@ Route::get('/home', function () {
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('user')->middleware('user')->group(function () {
+
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
-   
+
     // Essential Information
     Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
     Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
@@ -43,7 +44,7 @@ Route::prefix('user')->middleware('user')->group(function () {
    
     // Third Page Sections Files 
     Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
-    
+
     // Associates Members Start
     Route::any('/file/associate/add',[UserDashboardController::class, 'file_associate_add'])->name('file.associate.add');
     Route::any('/file/associate/delete/{id}',[UserDashboardController::class, 'file_associate_delete'])->name('file.associate.delete');
@@ -80,17 +81,13 @@ Route::prefix('user')->middleware('user')->group(function () {
 
 });
 
-
 Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Admin Route Start
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::any('/essential/category', [DashboardController::class, 'essential_category'])->name('essential.category');
-    Route::any('/essential/category/add', [DashboardController::class, 'essential_category_store'])->name('essential.category.store');
-    Route::any('/essential/category/delete/{id}', [DashboardController::class, 'essential_category_delete'])->name('essential.category.delete');
+    Route::get('/dashboard/{id}/{status}', [DashboardController::class, 'status'])->name('admin.dashboard.status');
     // Admin Route End
-
 
     // // User Routes Start
     // Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('admin.user.dashboard');
