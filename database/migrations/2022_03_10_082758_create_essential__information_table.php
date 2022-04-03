@@ -17,11 +17,11 @@ class CreateEssentialInformationTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('degree');
-            $table->string('passing_year');
-            $table->string('institutation');
-            $table->string('university');
-            $table->string('bmdc_reg_no');
-            $table->string('bmdc_reg_year');
+            $table->string('passing_year')->nullable();
+            $table->string('institutation')->nullable();
+            $table->string('university')->nullable();
+            $table->string('bmdc_reg_no')->nullable();
+            $table->string('bmdc_reg_year')->nullable();
             $table->timestamps();
         });
     }

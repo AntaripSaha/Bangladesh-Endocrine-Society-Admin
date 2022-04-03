@@ -23,6 +23,11 @@
   .color{
     background-color: #007bff;
   }
+  .required:after {
+    content:"*";
+    color: red;
+  }
+
   </style>
 </head>
 

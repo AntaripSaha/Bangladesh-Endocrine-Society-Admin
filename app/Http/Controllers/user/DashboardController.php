@@ -164,7 +164,7 @@ class DashboardController extends Controller
     public function payment_store(Request $req){
         $req->validate(
             [
-                'user_id' => 'required|unique:file__uploads,user_id'
+                'user_id' => 'required|unique:payments__infos,user_id'
             ],[
                 'user_id.required' => 'User Already Exists'
             ]);

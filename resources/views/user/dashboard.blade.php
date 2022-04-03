@@ -1,7 +1,6 @@
 @extends('layouts.adminlte')
 @section('content')
 
-
 <div class="container-fluid">
   <div class="row">
 
@@ -20,7 +19,7 @@
         <div class="form-group">
           <div class="row">
               <div class="col-2">
-                <label>Name in Full:</label>
+                <label class="required">Name in Full:  </label>
               </div>
               <div class="col-3">
                 <input type="text" class="form-control" placeholder="First" name="first_name" required>
@@ -39,22 +38,22 @@
           <div class="row">
 
             <div class="col-2">
-              <label>Date of Birth:</label>
+              <label class="required" >Date of Birth: </label>
             </div>
             <div class="col-3">
               <input type="date" class="form-control" name="birth_date" required>
             </div>
             <div class="col-2">
-              <label>Gender:</label>
+              <label class="required">Gender: </label>
             </div>
             <div class="form-group">
               <div class="form-check">
                 <input class="form-check-input" type="radio"  name="gender" value="male">
-                <label class="form-check-label">Male</label>
+                <label class="form-check-label">Male </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio"  name="gender" value="female">
-                <label class="form-check-label">Female</label>
+                <label class="form-check-label">Female </label>
               </div>
 
             </div>
@@ -66,13 +65,13 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label>Father's Name:</label>
+              <label class="required">Father's Name:</label>
             </div>
             <div class="col-4">
               <input type="text" class="form-control" placeholder="Full Name" name="father_name" required>
             </div>
             <div class="col-2">
-              <label>Mother's Name:</label>
+              <label class="required">Mother's Name:</label>
             </div>
             <div class="col-4">
               <input type="text" class="form-control" placeholder="Full Name" name="mother_name" required>
@@ -84,7 +83,7 @@
         <div class="form-group">
               <div class="row">
                 <div class="col-2">
-                  <label>Phone:</label>
+                  <label class="required">Phone: </label>
                 </div>
                 <div class="col-5">
                   <input type="text" class="form-control" placeholder="phone" name="phone" required> 
@@ -99,7 +98,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label for="">Email address</label>
+              <label class="required">Email Address:</label>
             </div>
             <div class="col-8">
               <input type="email" class="form-control" id="" name="email" placeholder="Enter email" required>
@@ -110,7 +109,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label for="">National ID No.</label>
+              <label class="required">National ID No:</label>
             </div>
             <div class="col-8">
               <input type="text" class="form-control" id="" name="nid" placeholder="Enter NID" required>
@@ -122,7 +121,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label for="">Present/Mailling Address: </label>
+              <label class="required">Present/Mailling Address: </label>
             </div>
             <div class="col-sm-8">
               <!-- textarea -->

@@ -29,7 +29,7 @@ class UserListController extends Controller
                         ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
                         ->leftJoin('current__appoinments', 'users.id', '=', 'current__appoinments.user_id')
                         ->select('users.*', 'personal__information.phone', 'personal__information.address', 'current__appoinments.designation')
-                        ->paginate(5);
+                        ->paginate(2);
         return view('user.user_list',compact('users'));
         }else{
             return redirect()->route('application.status')->with('error', 'You Are Not Approved Yet. Please Wait for the Approval. ');

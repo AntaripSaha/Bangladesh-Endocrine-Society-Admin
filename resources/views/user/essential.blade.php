@@ -78,9 +78,9 @@
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>Name of Degree</th>
-                          <th>Year of Passing</th>
-                          <th>Institute</th>
+                          <th class="required">Name of Degree</th>
+                          <th class="required">Year of Passing</th>
+                          <th class="required">Institute</th>
                           <th>University</th>
                           <th>BMDC Reg. No.</th>
                           <th>BMDC Reg. Yr.</th>

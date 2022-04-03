@@ -24,6 +24,7 @@ class DashboardController extends Controller
                     ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
                     ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
                         'payments__infos.trx_id', 'payments__infos.file')
+                    ->orderBy('id', 'desc')
                     ->paginate(5);
         return view('admin.dashboard',compact('users'));
     }
