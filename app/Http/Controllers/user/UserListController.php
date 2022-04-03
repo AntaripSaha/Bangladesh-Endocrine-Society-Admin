@@ -13,8 +13,12 @@ class UserListController extends Controller
 {
     public function application_status(){
         $users = User::where('id', auth()->user()->id)->get();
-        $payments = Payments_Info::where('user_id', auth()->user()->id)->get();
-        return view('user.application_status', compact('users','payments'));
+        $payments = Payments_Info::where('user_id', $users[0]->id)->get();
+        if($payments->isEmpty()){
+            return redirect()->back()->with('error', 'Please Complete The Form First.');
+        }else{
+            return view('user.application_status', compact('users','payments'));
+        }
     }
     public function user_list(){
         $status = User::where('id', auth()->user()->id)->pluck('status');
