@@ -1,8 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
-
-
 <main>
     <div>
         <div class="container-fluid">
@@ -248,17 +245,10 @@
                   </div>
                   <!-- /.card -->
                 </div>
-
-
             </div>
-
-
           </div>
     </div>
 </main>
-
-
-
 @endsection      
 
 

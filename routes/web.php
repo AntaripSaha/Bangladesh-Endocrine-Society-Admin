@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\user\DashboardController as UserDashboardController;
+use App\Http\Controllers\user\UserListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,48 +33,56 @@ Route::get('/home', function () {
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('user')->middleware('user')->group(function () {
+Route::middleware('user')->group(function () {
 
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-    Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::any('/user/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
 
     // Essential Information
-    Route::any('/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
-    Route::any('/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
-    Route::any('/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
+    Route::any('/user/essential/info', [UserDashboardController::class, 'essential_info'])->name('essential.information');
+    Route::any('/user/essential/info/add', [UserDashboardController::class, 'essential_info_store'])->name('essential.information.add');
+    Route::any('/user/essential/info/delete/{id}', [UserDashboardController::class, 'essential_info_delete'])->name('essential.information.delete');
    
     // Third Page Sections Files 
-    Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
+    Route::any('/user/file/attach',[UserDashboardController::class, 'file'])->name('file.attach');
 
     // Associates Members Start
-    Route::any('/file/associate/add',[UserDashboardController::class, 'file_associate_add'])->name('file.associate.add');
-    Route::any('/file/associate/delete/{id}',[UserDashboardController::class, 'file_associate_delete'])->name('file.associate.delete');
+    Route::any('/user/file/associate/add',[UserDashboardController::class, 'file_associate_add'])->name('file.associate.add');
+    Route::any('/user/file/associate/delete/{id}',[UserDashboardController::class, 'file_associate_delete'])->name('file.associate.delete');
     // Associates Members End
 
     // Current Membership in other Organization Start
-    Route::any('/file/current/add',[UserDashboardController::class, 'file_current_organization_add'])->name('file.current.organization.add');
-    Route::any('/file/current/delete/{id}',[UserDashboardController::class, 'file_current_organization_delete'])->name('file.current.organization.delete');
+    Route::any('/user/file/current/add',[UserDashboardController::class, 'file_current_organization_add'])->name('file.current.organization.add');
+    Route::any('/user/file/current/delete/{id}',[UserDashboardController::class, 'file_current_organization_delete'])->name('file.current.organization.delete');
     // Current Membership in other Organization End
 
     // Current Appointment/Position Start
-    Route::any('/file/appointment/add',[UserDashboardController::class, 'file_current_appointment_add'])->name('file.current.appointment.add');
-    Route::any('/file/appointment/delete/{id}',[UserDashboardController::class, 'file_current_appointment_delete'])->name('file.current.appointment.delete');
+    Route::any('/user/file/appointment/add',[UserDashboardController::class, 'file_current_appointment_add'])->name('file.current.appointment.add');
+    Route::any('/user/file/appointment/delete/{id}',[UserDashboardController::class, 'file_current_appointment_delete'])->name('file.current.appointment.delete');
     // Current Appointment/Position End
 
     // File Documents Start
-    Route::any('/file/document/add',[UserDashboardController::class, 'file_document_add'])->name('file.document.add');
+    Route::any('/user/file/document/add',[UserDashboardController::class, 'file_document_add'])->name('file.document.add');
     // File Documents End
 
     // Payment Section Start
-    Route::any('/payment', [UserDashboardController::class, 'payment'])->name('payment');
-    Route::any('/payment/store', [UserDashboardController::class, 'payment_store'])->name('payment.store');
+    Route::any('/user/payment', [UserDashboardController::class, 'payment'])->name('payment');
+    Route::any('/user/payment/store', [UserDashboardController::class, 'payment_store'])->name('payment.store');
     // Payment Section End
 
     // Area Section Start
-    Route::any('/area_clinical_interests', [UserDashboardController::class, 'area'])->name('area');
-    Route::any('/area_clinical_interests/store', [UserDashboardController::class, 'area_store'])->name('area.store');
-    Route::any('/area_clinical_interests/details/{id}', [UserDashboardController::class, 'area_details'])->name('area.details');
+    Route::any('/user/area_clinical_interests', [UserDashboardController::class, 'area'])->name('area');
+    Route::any('/user/area_clinical_interests/store', [UserDashboardController::class, 'area_store'])->name('area.store');
+    Route::any('/user/area_clinical_interests/details/{id}', [UserDashboardController::class, 'area_details'])->name('area.details');
     // Area Section End
+
+    // All User List Start
+    Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');
+    // All User List End
+    
+    // All User List Start
+    Route::any('/list', [UserListController::class, 'user_list'])->name('user.list');
+    // All User List End
 
     // Final Section Start
     Route::any('/complete', [UserDashboardController::class, 'final'])->name('final');

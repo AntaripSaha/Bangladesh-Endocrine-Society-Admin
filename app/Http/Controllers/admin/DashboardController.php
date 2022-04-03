@@ -20,10 +20,11 @@ class DashboardController extends Controller
 {
     public function index(){
         $users = DB::table('users')
-                            ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
-                            ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
-                            'payments__infos.trx_id', 'payments__infos.file')
-                            ->paginate(5);
+                    ->where('admin', 0)
+                    ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
+                        'payments__infos.trx_id', 'payments__infos.file')
+                    ->paginate(5);
         return view('admin.dashboard',compact('users'));
     }
     public function status($id, $status){
@@ -42,9 +43,6 @@ class DashboardController extends Controller
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
-         $area_name[0];
-
-
         return view('admin.user_details', compact('personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
