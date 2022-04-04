@@ -17,6 +17,7 @@ class CreatePaymentsInfosTable extends Migration
             $table->id();
             $table->string('membership_category');
             $table->string('date');
+            $table->string('phone')->nullable();
             $table->string('trx_id');
             $table->string('file')->nullable();
             $table->string('user_id')->unique();

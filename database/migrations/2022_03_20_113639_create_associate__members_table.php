@@ -17,7 +17,7 @@ class CreateAssociateMembersTable extends Migration
             $table->id();
             $table->string('institute');
             $table->string('from');
-            $table->string('to');
+            $table->string('to')->nullable();
             $table->string('user_id');
             $table->timestamps();
         });

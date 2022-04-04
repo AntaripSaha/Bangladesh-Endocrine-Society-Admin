@@ -11,7 +11,7 @@
                     <div class="card-header"    >
                       <h3 class="card-title">Payment Section</h3>
                     </div>
-                    <p style="margin-left: 20px;margin-top: 10px;">
+                    <p class="required" style="margin-left: 20px;margin-top: 10px;">
                       Choose Your Desire Plan.
                     </p>
                     <table class="table table-hover text-nowrap table-responsive">
@@ -85,8 +85,9 @@
                     <table class="table table-hover text-nowrap table-responsive">
                       <thead>
                         <tr>
-                          <th>Date of Payment</th>
-                          <th>Transaction ID</th>
+                          <th class="required">Date of Payment</th>
+                          <th>Phone</th>
+                          <th class="required">Transaction ID</th>
                           <th>File</th>
                         </tr>
                       </thead>
@@ -95,6 +96,9 @@
                           <td>
                             <input type="date" name="date" class="form-control" required>
                             <input type="hidden" name="user_id" class="form-control" value="{{auth()->user()->id}}" >
+                          </td>
+                          <td>
+                            <input type="text" name="phone" placeholder="From the Number You've paid" class="form-control" >
                           </td>
                           <td>
                             <input type="text" name="trx_id" class="form-control" required>

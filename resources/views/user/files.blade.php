@@ -79,16 +79,16 @@
                         <table class="table table-hover text-nowrap">
                           <thead>
                             <tr>
-                              <th>Institute/Hospital</th>
-                              <th>From</th>
+                              <th class="required">Institute/Hospital</th>
+                              <th class="required">From</th>
                               <th>To</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input class="form-control" name="institute" type="text"></td>
-                              <td><input class="form-control" name="from" type="date"></td>
-                              <td><input class="form-control" name="to" type="date"></td>
+                              <td><input class="form-control" name="institute" type="text" required></td>
+                              <td><input class="form-control" name="from" type="date" required></td>
+                              <td><input class="form-control" name="to" type="date" ></td>
                             </tr>
                           </tbody>
                         </table>
@@ -174,14 +174,14 @@
                         <table class="table table-hover text-nowrap">
                           <thead>
                             <tr>
-                              <th>Name of Organization</th>
-                              <th>Position</th>
+                              <th class="required">Name of Organization</th>
+                              <th class="required">Position</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input class="form-control" name="organization" type="text"></td>
-                              <td><input class="form-control" name="position" type="text"></td>
+                              <td><input class="form-control" name="organization" type="text" readonly></td>
+                              <td><input class="form-control" name="position" type="text" required></td>
                             </tr>
                           </tbody>
                         </table>
@@ -272,16 +272,16 @@
                         <table class="table table-hover text-nowrap">
                           <thead>
                             <tr>
-                              <th>Designation</th>
-                              <th>Institute/Hospital/Workplace</th>
-                              <th>From</th>
+                              <th class="required">Designation</th>
+                              <th class="required">Institute/Hospital/Workplace</th>
+                              <th class="required">From</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input class="form-control" name="designation" type="text"></td>
-                              <td><input class="form-control" name="hospital" type="text"></td>
-                              <td><input class="form-control" name="from" type="date"></td>
+                              <td><input class="form-control" name="designation" type="text" required></td>
+                              <td><input class="form-control" name="hospital" type="text" required></td>
+                              <td><input class="form-control" name="from" type="date" required></td>
                             </tr>
                           </tbody>
                         </table>
@@ -319,7 +319,7 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td>National ID Card.</td>
+                          <td class="required">National ID Card.</td>
                           <td>
                             <input type="file" name="nid" required>
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -334,7 +334,7 @@
                         </tr>
                         <tr>
                           <td>3</td>
-                          <td>Certificates of all Degree/Diploma<br>Fellowship/Postgraduation.</td>
+                          <td class="required">Certificates of all Degree/Diploma<br>Fellowship/Postgraduation.</td>
                           <td>
                             <input type="file" name="degree" required>
                           </td>

@@ -171,6 +171,7 @@ class DashboardController extends Controller
         $payments_infos = new Payments_Info;
         $payments_infos->membership_category = $req->checkbox; 
         $payments_infos->date = $req->date; 
+        $payments_infos->phone = $req->phone; 
         $payments_infos->trx_id = $req->trx_id; 
         $payments_infos->user_id = auth()->user()->id;
         if($req->file('file')){
