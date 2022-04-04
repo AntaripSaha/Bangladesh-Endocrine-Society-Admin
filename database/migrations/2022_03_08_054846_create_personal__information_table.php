@@ -21,9 +21,9 @@ class CreatePersonalInformationTable extends Migration
             $table->string('last_name');
             $table->date('bith_date');
             $table->string('gender');
-            $table->string('father_name');
-            $table->string('mother_name');
-            $table->string('phone');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('phone')->nullable();
             $table->string('tel');
             $table->string('email')->unique();
             $table->string('nid');

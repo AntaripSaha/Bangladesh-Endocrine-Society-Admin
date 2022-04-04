@@ -180,7 +180,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input class="form-control" name="organization" type="text" readonly></td>
+                              <td><input class="form-control" name="organization" type="text" required></td>
                               <td><input class="form-control" name="position" type="text" required></td>
                             </tr>
                           </tbody>

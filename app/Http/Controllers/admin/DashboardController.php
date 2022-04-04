@@ -9,6 +9,7 @@ use App\Models\Current_Appoinment;
 use App\Models\Current_Organization;
 use App\Models\Essential_Category;
 use App\Models\Essential_Information;
+use App\Models\File_Upload;
 use App\Models\Payments_Info;
 use App\Models\Personal_Information;
 use App\Models\User;
@@ -40,13 +41,14 @@ class DashboardController extends Controller
         $current_organizations = Current_Organization::where('user_id', $id)->get();
         $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
+        $file_uploads = File_Upload::where('user_id', $id)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
         return view('admin.user_details', compact('personal_information', 'essential_informations', 
-        'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
+        'associate_members', 'current_organizations', 'current_appoinments', 'area_name', 'file_uploads'));
     }
     public function search(Request $req){
         $users = DB::table('users')

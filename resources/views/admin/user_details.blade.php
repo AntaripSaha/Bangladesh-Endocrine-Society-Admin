@@ -245,6 +245,59 @@
                   </div>
                   <!-- /.card -->
                 </div>
+                <div class="col-12">
+                  <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Attached Files</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                      <table class="table table-hover text-nowrap table-responsive">
+                        <thead>
+                          <tr>
+                            <th>S/L</th>
+                            <th>NID</th>
+                            <th>BMDC Reg Certificate</th>
+                            <th>Degree</th>
+                            <th>Active Participation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="width: 25%">1</td>
+                            <td style="width: 20%">
+                              @if($file_uploads[0]->nid)
+                              <a href="{{asset($file_uploads[0]->nid)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                              @else
+                              @endif
+                            </td>
+                            <td style="width: 20%">
+                              @if($file_uploads[0]->bmdc_reg_certificate)
+                              <a href="{{asset($file_uploads[0]->bmdc_reg_certificate)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                              @else
+                              @endif
+                            </td>
+                            <td style="width: 20%">
+                              @if($file_uploads[0]->certificate_all_degree)
+                              <a href="{{asset($file_uploads[0]->certificate_all_degree)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                              @else
+                              @endif
+                            </td>
+                            <td style="width: 20%">
+                              @if($file_uploads[0]->active_perticipation)
+                              <a href="{{asset($file_uploads[0]->active_perticipation)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                              @else
+                              @endif
+                            </td>
+                          </tr>
+                        </tbody>
+                      <!-- Button trigger modal -->
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
             </div>
           </div>
     </div>
