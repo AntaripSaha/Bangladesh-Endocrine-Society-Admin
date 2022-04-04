@@ -22,8 +22,9 @@ class DashboardController extends Controller
         $users = DB::table('users')
                     ->where('admin', 0)
                     ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
                     ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
-                        'payments__infos.trx_id', 'payments__infos.file')
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone')
                     ->orderBy('id', 'desc')
                     ->paginate(5);
         return view('admin.dashboard',compact('users'));
@@ -47,20 +48,18 @@ class DashboardController extends Controller
         return view('admin.user_details', compact('personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
-    // public function essential_category(){
-    //     $degrees = Essential_Category::all();
-    //     return view('admin.essential_categories',compact('degrees'));
-    // }
-    // public function essential_category_store(Request $req){
-    //     $essential_category = new Essential_Category;
-    //     $essential_category->degree = $req->degree;
-    //     if($essential_category->save()){
-    //         return redirect()->back()->with('success', 'Category Added Successfully');
-    //     }
-    // }
-    // public function essential_category_delete($id){
-    //     Essential_Category::find($id)->delete();
-    //     return redirect()->back()->with('warning', 'Category Deleted Successfully');
-    // }
+    public function search(Request $req){
+        $users = DB::table('users')
+                    ->where('admin', 0)
+                    ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
+                    ->where('users.name', 'LIKE', '%'.$req->data.'%')
+                    ->orWhere('personal__information.phone', 'LIKE', '%'.$req->data.'%')
+                    ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
+        return view('admin.dashboard',compact('users'));
+    }
 }
 

@@ -1,14 +1,17 @@
 @extends('layouts.admin')
 @section('content')
 <main>
-    <div>
       <div class="container-fluid">
-          <div class="row">
-            <form action="#" method="POST" enctype="multipart/form-data">
-              @csrf
               <!-- /.row -->
               <div class="row">
                   <div class="col-12">
+                    <form action="{{route('admin.user.search')}}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                        <input type="text" placeholder="Search Here" class="form-control" name="data" style="width: 30% ; margin-top: 1%;">
+                        <button type="submit" class="btn btn-outline-info btn-sm" style="margin-left: 30% ; margin-top: -6%;">
+                          Search
+                        </button>
+                    </form>
                     <div class="card card-secondary">
                       <div class="card-header">
                         <h3 class="card-title">Users List</h3>
@@ -20,6 +23,7 @@
                             <tr>
                               <th>ID</th>
                               <th>Name of User's</th>
+                              <th>Phone</th>
                               <th>Category</th>
                               <th>Trx ID</th>
                               <th>Payment Date</th>
@@ -36,6 +40,7 @@
                             <tr>
                               <td>{{$i}}</td>
                               <td style="width:250px">{{$user->name}}</td>
+                              <td style="width:250px">{{$user->phone}}</td>
                               <td style="width:250px">{{$user->membership_category}}</td>
                               <td style="width:250px">{{$user->trx_id}}</td>
                               <td style="width:250px">{{$user->date}}</td>
@@ -45,7 +50,6 @@
                               <a href="{{asset($user->file)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
                               @else
                               @endif
-                           
                               </td>
                               <td style="width:250px">
                               <!-- Example single danger button -->
@@ -86,11 +90,6 @@
                     <!-- /.card -->
                   </div>
               </div>
-            </form>
-          </div>
       </div>
-    </div>
 </main>
-@endsection      
-
-
+@endsection   

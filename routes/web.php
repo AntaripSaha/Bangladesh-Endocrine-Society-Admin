@@ -81,8 +81,10 @@ Route::middleware('user')->group(function () {
     // All User List End
     
     // All User List Start
-    Route::any('/list', [UserListController::class, 'user_list'])->name('user.list');
+    Route::any('/list/all', [UserListController::class, 'user_list'])->name('user.list');
+    Route::any('/list/search', [UserListController::class, 'user_list_search'])->name('user.list.search');
     // All User List End
+    Route::any('/details/{id}', [UserListController::class, 'user_information'])->name('member.details');
 
     // Final Section Start
     Route::any('/complete', [UserDashboardController::class, 'final'])->name('final');
@@ -99,6 +101,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // User Information 
     Route::any('/user/details/{id}', [DashboardController::class, 'user_details'])->name('admin.user.details');
     // Admin Route End
+    Route::any('/search', [DashboardController::class, 'search'])->name('admin.user.search');
+
 
     // // User Routes Start
     // Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('admin.user.dashboard');

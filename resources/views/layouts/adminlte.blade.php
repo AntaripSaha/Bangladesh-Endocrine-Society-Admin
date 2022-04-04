@@ -41,7 +41,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        {{-- <a href="#" class="nav-link">Home</a> --}}
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <div class="dropdown show topright">
@@ -84,8 +84,6 @@
         </div>
       </div> --}}
 
-
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -93,23 +91,23 @@
                with font-awesome or any other icon font library -->
           <li class="{{ (request()->is('user/*')) ? 'nav-item menu-open color' : '' }}">
             <a href="{{route('user.dashboard')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Dashboard
+                Form
               </p>
             </a>
           </li>    
           <li class="{{ (request()->is('application/status')) ? 'nav-item menu-open color' : '' }}">
             <a href="{{route('application.status')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-pencil-alt"></i>
               <p>
                 Application Status
               </p>
             </a>
           </li>    
-          <li class="{{ (request()->is('list')) ? 'nav-item menu-open color' : '' }} ">
+          <li class="{{ (request()->is('list/*')) ? 'nav-item menu-open color' : '' }} ">
             <a href="{{route('user.list')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-user-friends"></i>
               <p>
                 All Members
               </p>
