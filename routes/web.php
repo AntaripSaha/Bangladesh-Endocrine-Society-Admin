@@ -21,13 +21,9 @@ Route::get('/', function(){
     return view('auth.register');
 });
 
-Route::get('/home', function () {
-    return view('welcome');
-})->name('home');
-
-// Route::get('/adlogin', function(){
-//     return view('loginv2');
-// })->name('adlogin');
+// Route::get('/home', function () {
+//     return view('welcome');
+// })->name('home');
 
 
 
@@ -95,7 +91,8 @@ Route::middleware('user')->group(function () {
 Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Admin Route Start
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard/{id}/{status}', [DashboardController::class, 'status'])->name('admin.dashboard.status');
     // User Information 
