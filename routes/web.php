@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\user\DashboardController as UserDashboardController;
 use App\Http\Controllers\user\UserListController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +115,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::any('/user/details/{id}', [DashboardController::class, 'user_details'])->name('admin.user.details');
     // Admin Route End
     Route::any('/search', [DashboardController::class, 'search'])->name('admin.user.search');
+
+    // Download PDF
+    Route::any('member/download/{id}', [DashboardController::class, 'download'])->name('member.download');
 
 
     // // User Routes Start

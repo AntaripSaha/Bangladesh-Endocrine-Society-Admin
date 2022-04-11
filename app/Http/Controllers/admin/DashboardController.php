@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class DashboardController extends Controller
 {
@@ -35,6 +36,7 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'User Status Changed Successfully');
     }
     public function user_details($id){
+        $pdf_id = $id;
         $personal_information = Personal_Information::where('user_id', $id)->get();
         $essential_informations = Essential_Information::where('user_id', $id)->get();
         $associate_members = Associate_Member::where('user_id', $id)->get();
@@ -47,7 +49,7 @@ class DashboardController extends Controller
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
-        return view('admin.user_details', compact('personal_information', 'essential_informations', 
+        return view('admin.user_details', compact('pdf_id','personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name', 'file_uploads'));
     }
     public function search(Request $req){
@@ -62,6 +64,30 @@ class DashboardController extends Controller
                     ->orderBy('id', 'desc')
                     ->paginate(5);
         return view('admin.dashboard',compact('users'));
+    }
+    public function download($id){        
+        $personal_information = Personal_Information::where('user_id', $id)->get();
+        // $essential_informations = Essential_Information::where('user_id', $id)->get();
+        // $associate_members = Associate_Member::where('user_id', $id)->get();
+        // $current_organizations = Current_Organization::where('user_id', $id)->get();
+        // $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        // $area_id = User_Area_of_Interests::where('user_id', $id)->get();
+        // $file_uploads = File_Upload::where('user_id', $id)->get();
+        // $area_name = [];
+        // foreach($area_id as $key=>$id){
+        //     $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
+        //     array_push($area_name,  $area_of_interests);
+        // }
+        // return view('admin.user_details_download', compact('personal_information', 'essential_informations', 
+        // 'associate_members', 'current_organizations', 'current_appoinments', 'area_name', 'file_uploads'));
+
+        $data = [
+            'title' => 'Bangladesh Endocrine Society (BES)',
+            'sub_title' => 'Membership Information',
+            'personal_information' => $personal_information
+        ];
+        $pdf = PDF::loadView('admin.user_details_download', $data);
+        return $pdf->stream('new.pdf');
     }
 }
 
