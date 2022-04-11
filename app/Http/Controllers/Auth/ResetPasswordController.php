@@ -20,6 +20,12 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+    public function rules()
+    {
+        return [
+        'password' => ['required', 'min:6', 'confirmed']
+        ];
+    }
 
     /**
      * Where to redirect users after resetting their password.

@@ -73,13 +73,13 @@
       </form>
 
 
-      {{-- <p class="mb-1">
+       <p class="mb-1">
         @if (Route::has('password.request'))
             <a class="btn btn-link" style="margin-left:-11px !important" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
         @endif
-      </p> --}}
+      </p> 
       <p class="mb-0">
         <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
       </p>

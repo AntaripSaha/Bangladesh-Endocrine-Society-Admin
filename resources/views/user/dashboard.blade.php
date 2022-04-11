@@ -65,16 +65,16 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label class="required">Father's Name:</label>
+              <label>Father's Name:</label>
             </div>
             <div class="col-4">
-              <input type="text" class="form-control" placeholder="Full Name" name="father_name" required>
+              <input type="text" class="form-control" placeholder="Full Name" name="father_name">
             </div>
             <div class="col-2">
-              <label class="required">Mother's Name:</label>
+              <label>Mother's Name:</label>
             </div>
             <div class="col-4">
-              <input type="text" class="form-control" placeholder="Full Name" name="mother_name" required>
+              <input type="text" class="form-control" placeholder="Full Name" name="mother_name" >
             </div>
           </div>
         </div>
@@ -109,10 +109,10 @@
         <div class="form-group">
           <div class="row">
             <div class="col-2">
-              <label class="required">National ID No:</label>
+              <label >National ID No:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control" id="" name="nid" placeholder="Enter NID" required>
+              <input type="text" class="form-control" id="" name="nid" placeholder="Enter NID" >
             </div>
           </div>
         </div>
@@ -136,11 +136,11 @@
         <button type="submit" class="btn btn-outline-info" style="margin-left: 126px; width:140px !important;">
           Submit
         </button>
-        <a href="{{route('essential.information')}}">
-          <button class="btn btn-outline-success" style="margin-left: 126px; width:140px !important;" type="button">
-            Next Page
-          </button>
-        </a>
+        <!--<a href="{{route('essential.information')}}">-->
+        <!--  <button class="btn btn-outline-success" style="margin-left: 126px; width:140px !important;" type="button">-->
+        <!--    Next Page-->
+        <!--  </button>-->
+        <!--</a>-->
 
       </div>
       {{-- card body --}}

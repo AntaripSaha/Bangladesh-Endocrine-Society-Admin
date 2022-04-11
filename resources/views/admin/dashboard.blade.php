@@ -87,7 +87,9 @@
                       </div>
                       <!-- /.card-body -->
                     </div>
+                    
                     {{$users->links("pagination::bootstrap-4")}}
+
                     <!-- /.card -->
                   </div>
               </div>
