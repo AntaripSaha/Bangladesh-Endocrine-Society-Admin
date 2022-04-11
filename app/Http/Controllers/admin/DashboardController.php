@@ -88,7 +88,7 @@ class DashboardController extends Controller
             'area_name'=>$area_name
         ];
         $pdf = PDF::loadView('admin.user_details_download', $data);
-        return $pdf->stream('new.pdf');
+        return $pdf->stream('members_information.pdf');
     }
 }
 

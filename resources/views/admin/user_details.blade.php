@@ -303,8 +303,8 @@
                   <!-- /.card -->
                 </div>
                 <a href="{{route('member.download',['id'=>$pdf_id])}}">
-                  <button class="btn btn-outline-info btn-sm">
-                    Download
+                  <button class="btn btn-info btn-sm" style="margin-left: 100%; padding: 10%;width: 155px;margin-bottom: 40%;">
+                   PDF Download
                   </button>
                 </a>
             </div>

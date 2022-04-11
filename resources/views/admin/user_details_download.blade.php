@@ -32,7 +32,7 @@
       line-height: 0px;
     }
     .personal_heading{
-      padding: 5px;
+      padding: 10px;
       background-color: rgb(174, 192, 209);
     }
     .essential_heading{
@@ -45,7 +45,15 @@
     }
     .associates_heading{
       padding: 10px;
-      background-color: rgb(137, 106, 184);
+      background-color: rgb(134, 106, 158);
+    }
+    .organization_heading{
+      padding: 10px;
+      background-color: rgb(109, 106, 158);
+    }
+    .area_heading{
+      padding: 10px;
+      background-color: rgb(158, 106, 136);
     }
     .info_title{
       margin-top: auto;
@@ -56,7 +64,7 @@
 <body>
   <h1 class="title">{{$title}}</h1>
   <h2 class="sub_title">{{$sub_title}}</h2>
-  <img class="img" src="D:\Work\bes\public\assets\images\faces\5.jpg" height="150px" width="150px" alt="">
+  <img class="img" src="D:\Work\bes\public\assets\images\faces\2.jpg" height="150px" width="150px" alt="">
   <!-- Personal Information Start -->
   <div>
     @foreach($personal_information as $personal)
@@ -188,7 +196,7 @@
   <!-- Associates Members End -->
   <!-- Current Organization Start -->
   <div>
-    <h4 class="essential_heading">Current Organization</h4>
+    <h4 class="organization_heading">Current Organization</h4>
     <table border='0px' style="text-align:center; width: 100%;">
       <thead>
         <th>S/L</th>
@@ -215,8 +223,8 @@
   <!-- Current Organization End -->
   <!-- Area of Interests Start -->
   <div>
-    <h4 class="essential_heading">Area of Interests</h4>
-    <table border='0px' style="text-align:center; width: 100%;">
+    <h4 class="area_heading">Area of Interests</h4>
+    <table border='0px' style=" text-align:center; width: 100%;">
       <thead>
         <th>S/L</th>
         <th>Name</th>
@@ -227,7 +235,7 @@
       @endphp
       @foreach($area_name as $area_name)
         <tr>
-          <td>{{$i }}</td>
+          <td>{{$i}}</td>
           <td>{{$area_name[0]->name }}</td>
         </tr>
         @php
@@ -238,6 +246,5 @@
     </table>
   </div>
   <!-- Area of Interests End -->
-
 </body>
 </html>
