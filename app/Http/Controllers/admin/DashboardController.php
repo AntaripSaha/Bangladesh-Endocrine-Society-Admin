@@ -21,7 +21,7 @@ use PDF;
 class DashboardController extends Controller
 {
     public function index(){
-        $users = DB::table('users')
+       $users = DB::table('users')
                     ->where('admin', 0)
                     ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
                     ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
@@ -37,6 +37,7 @@ class DashboardController extends Controller
     }
     public function user_details($id){
         $pdf_id = $id;
+        $payment_information = Payments_Info::where('user_id', $id)->get();
         $personal_information = Personal_Information::where('user_id', $id)->get();
         $essential_informations = Essential_Information::where('user_id', $id)->get();
         $associate_members = Associate_Member::where('user_id', $id)->get();
@@ -49,7 +50,7 @@ class DashboardController extends Controller
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
-        return view('admin.user_details', compact('pdf_id','personal_information', 'essential_informations', 
+        return view('admin.user_details', compact('pdf_id','payment_information','personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name', 'file_uploads'));
     }
     public function search(Request $req){
@@ -69,6 +70,7 @@ class DashboardController extends Controller
         $personal_information = Personal_Information::where('user_id', $id)->get();
         $essential_informations = Essential_Information::where('user_id', $id)->get();
         $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        $payment_information = Payments_Info::where('user_id', $id)->get();
         $associate_members = Associate_Member::where('user_id', $id)->get();
         $current_organizations = Current_Organization::where('user_id', $id)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
@@ -83,6 +85,7 @@ class DashboardController extends Controller
             'personal_information' => $personal_information,
             'essential_informations'=>$essential_informations,
             'current_appoinments'=>$current_appoinments,
+            'payment_information'=>$payment_information,
             'associate_members'=>$associate_members,
             'current_organizations'=>$current_organizations,
             'area_name'=>$area_name

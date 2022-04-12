@@ -24,7 +24,8 @@
     .personal_info{
       margin-left: 30%;
       font-weight: 100;
-      margin-top: -22%;
+      margin-top: -20%;
+      margin-bottom: 5%;
       line-height: 8px;
       color: rgba(0, 0, 0, 0.959);
     }
@@ -36,24 +37,28 @@
       background-color: rgb(174, 192, 209);
     }
     .essential_heading{
+      background-color: rgb(158, 106, 136);
       padding: 10px;
-      background-color: rgb(129, 184, 132);
     }
     .current_heading{
       padding: 10px;
-      background-color: rgb(129, 184, 174);
+      background-color: rgb(109, 106, 158);
+    }
+    .payment_heading{
+      padding: 10px;
+      background-color: rgb(61, 165, 113);
     }
     .associates_heading{
+      background-color: rgb(129, 184, 174);
       padding: 10px;
-      background-color: rgb(134, 106, 158);
     }
     .organization_heading{
       padding: 10px;
-      background-color: rgb(109, 106, 158);
+      background-color: rgb(134, 106, 158);
     }
     .area_heading{
       padding: 10px;
-      background-color: rgb(158, 106, 136);
+      background-color: rgb(129, 184, 132);
     }
     .info_title{
       margin-top: auto;
@@ -64,7 +69,7 @@
 <body>
   <h1 class="title">{{$title}}</h1>
   <h2 class="sub_title">{{$sub_title}}</h2>
-  <img class="img" src="D:\Work\bes\public\assets\images\faces\2.jpg" height="150px" width="150px" alt="">
+  <img class="img" src="{{$personal_information[0]->image}}" height="150px" width="150px" alt="">
   <!-- Personal Information Start -->
   <div>
     @foreach($personal_information as $personal)
@@ -72,7 +77,6 @@
       <p class="">Name: {{$personal->first_name}} {{$personal->middle_name}} {{$personal->last_name}}</p>
       <p class="">Phone: {{$personal->phone}}</p>
       <p class="">Email: {{$personal->email}}</p>
-      <p class="">NID: {{$personal->nid}}</p>
       <p class="">Address: {{$personal->address}}</p>
     </div>
     @endforeach
@@ -137,7 +141,38 @@
   </div>
   <!-- Essential Information End -->
   <!-- Current Appoinment Start -->
-  <div>
+  <div style="page-break-inside: avoid">
+    <h4 class="payment_heading">Payment Information</h4>
+    <table border='0px' style="text-align:center; width: 100%;">
+      <thead>
+        <th style="padding: 3px; ">S/L</th>
+        <th style="padding: 3px;">Membership Category</th>
+        <th style="padding: 3px;">Date</th>
+        <th style="padding: 3px;">Phone</th>
+        <th style="padding: 3px;">Transaction ID</th>
+      </thead>
+      <tbody>
+      @php
+        $i = 1;
+      @endphp
+      @foreach($payment_information as $payment)
+        <tr>
+          <td style="padding: 10px;">{{$i }}</td>
+          <td style="padding: 10px;">{{$payment->membership_category }}</td>
+          <td style="padding: 10px;">{{$payment->date }}</td>
+          <td style="padding: 10px;">{{$payment->phone }}</td>
+          <td style="padding: 10px;">{{$payment->trx_id }}</td>
+        </tr>
+        @php
+          $i = $i+1;
+        @endphp
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+  <!-- Current Appoinment End -->
+  <!-- Current Appoinment Start -->
+  <div style="page-break-inside: avoid">
     <h4 class="current_heading">Current Appoinments</h4>
     <table border='0px' style="text-align:center; width: 100%;">
       <thead>
@@ -166,7 +201,7 @@
   </div>
   <!-- Current Appoinment End -->
   <!-- Associates Members Start -->
-  <div>
+  <div style="page-break-inside: avoid">
     <h4 class="associates_heading">Associates Members</h4>
     <table border='0px' style="text-align:center; width: 100%;">
       <thead>
@@ -195,7 +230,7 @@
   </div>
   <!-- Associates Members End -->
   <!-- Current Organization Start -->
-  <div>
+  <div style="page-break-inside: avoid">
     <h4 class="organization_heading">Current Organization</h4>
     <table border='0px' style="text-align:center; width: 100%;">
       <thead>
@@ -222,7 +257,7 @@
   </div>
   <!-- Current Organization End -->
   <!-- Area of Interests Start -->
-  <div>
+  <div style="page-break-inside: avoid">
     <h4 class="area_heading">Area of Interests</h4>
     <table border='0px' style=" text-align:center; width: 100%;">
       <thead>

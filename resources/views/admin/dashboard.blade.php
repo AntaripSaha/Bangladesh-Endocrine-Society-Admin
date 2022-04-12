@@ -70,11 +70,17 @@
                               </div>
                               </td>
                               <td>
+                                @if($user->membership_category)
                                 <a href="{{route('admin.user.details', ['id'=>$user->id])}}">
                                   <button type="button" class="btn btn-outline-info btn-sm" >
                                       View
                                   </button>
                                 </a>
+                                @else
+                                <button type="button" class="btn btn-outline-danger btn-sm" >
+                                  Not Available
+                                </button>
+                                @endif
                               </td>
                             </tr>
                             @php
@@ -87,9 +93,7 @@
                       </div>
                       <!-- /.card-body -->
                     </div>
-                    
                     {{$users->links("pagination::bootstrap-4")}}
-
                     <!-- /.card -->
                   </div>
               </div>

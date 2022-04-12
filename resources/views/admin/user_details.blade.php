@@ -55,6 +55,55 @@
                   <!-- /.card -->
                 </div>
                 <div class="col-12">
+                  <div class="card card-danger">
+                    <div class="card-header">
+                      <h3 class="card-title">Payment Information</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                      <table class="table table-hover text-nowrap table-responsive">
+                        <thead>
+                          <tr>
+                            <th>S/L</th>
+                            <th>Membership Category</th>
+                            <th>Date</th>
+                            <th>Phone</th>
+                            <th>Transaction ID</th>
+                            <th>File</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @php
+                          $i = 1;
+                          @endphp
+                          @foreach($payment_information as $information)
+                          <tr>
+                            <td style="width: 10%">{{$i}}</td>
+                            <td style="width: 15%">{{$information->membership_category}}</td>
+                            <td style="width: 15%">{{$information->date}}</td>
+                            <td style="width: 15%">{{$information->phone}}</td>
+                            <td style="width: 15%">{{$information->trx_id}}</td>
+                            @if($information->file)
+                            <td style="width: 15%">
+                              <a href="{{asset($information->file)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                            </td>
+                            @else
+                            <td style="width: 15%">----</td>
+                            @endif
+                          </tr>
+                          @php
+                          $i = $i+1;
+                          @endphp
+                          @endforeach
+                        </tbody>
+                      <!-- Button trigger modal -->
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <div class="col-12">
                   <div class="card card-info">
                     <div class="card-header">
                       <h3 class="card-title">Essential Supporting Information</h3>

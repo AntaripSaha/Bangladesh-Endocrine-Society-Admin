@@ -29,7 +29,7 @@
                           <td>1</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="checkbox" value="Package One" checked>
+                                <input type="radio" id="radioPrimary1" name="checkbox" value="General Member" checked>
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -42,7 +42,7 @@
                           <td>2</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" value="Package Two" name="checkbox" >
+                                <input type="radio" id="radioPrimary1" value="Life Member" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -55,7 +55,7 @@
                           <td>3</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" value="Package Three" name="checkbox" >
+                                <input type="radio" id="radioPrimary1" value="Associate Member" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
