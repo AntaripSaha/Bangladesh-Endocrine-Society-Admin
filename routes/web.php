@@ -79,6 +79,16 @@ Route::middleware('user')->group(function () {
     Route::any('/user/area_clinical_interests/store', [UserDashboardController::class, 'area_store'])->name('area.store');
     Route::any('/user/area_clinical_interests/details/{id}', [UserDashboardController::class, 'area_details'])->name('area.details');
     // Area Section End
+   
+   
+    Route::any('/permission',[UserDashboardController::class, 'permission'])->name('user.permission');
+    
+    Route::any('/permission/essential/store/{value}',[UserDashboardController::class, 'permission_essential_store'])->name('user.permission.essential.store');
+    Route::any('/permission/active/store/{value}',[UserDashboardController::class, 'permission_active_store'])->name('user.permission.active.store');
+    
+    
+    
+    
     // All User List Start
     Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');
     // All User List End

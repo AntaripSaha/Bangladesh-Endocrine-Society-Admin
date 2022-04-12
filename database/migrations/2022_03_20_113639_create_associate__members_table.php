@@ -19,6 +19,7 @@ class CreateAssociateMembersTable extends Migration
             $table->string('from');
             $table->string('to')->nullable();
             $table->string('user_id');
+            $table->string('permission')->default(0);
             $table->timestamps();
         });
     }

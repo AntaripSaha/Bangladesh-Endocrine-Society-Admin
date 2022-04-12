@@ -93,6 +93,14 @@
               </p>
             </a>
           </li>    
+          <li class="{{ (request()->is('permission')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('user.permission')}}" class="nav-link">
+              <i class="nav-icon fas fa-shield-alt"></i>
+              <p>
+                Permissions
+              </p>
+            </a>
+          </li>    
           <li class="{{ (request()->is('application/status')) ? 'nav-item menu-open color' : '' }}">
             <a href="{{route('application.status')}}" class="nav-link">
               <i class="nav-icon fas fa-pencil-alt"></i>

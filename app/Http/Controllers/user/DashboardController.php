@@ -228,4 +228,35 @@ class DashboardController extends Controller
     public function final(){
         return view('user.final');
     }
+    public function permission(){
+        $essential_info = Essential_Information::where('user_id',auth()->user()->id)->select('permission')->first();
+        $active = Associate_Member::where('user_id',auth()->user()->id)->select('permission')->first();
+        return view('user.permission', compact('essential_info','active'));
+    }
+    public function permission_essential_store($value){
+        // return $value;
+        if($value == 1){
+            Essential_Information::where('user_id',auth()->user()->id)->update([
+                'permission'=>1
+            ]);
+        }else{
+            Essential_Information::where('user_id',auth()->user()->id)->update([
+                'permission'=>0
+            ]);
+        }
+        return redirect()->back()->with('success', 'Permission Updated');
+    }
+    public function permission_active_store($value){
+        // return $value;
+        if($value == 1){
+            Associate_Member::where('user_id',auth()->user()->id)->update([
+                'permission'=>1
+            ]);
+        }else{
+            Associate_Member::where('user_id',auth()->user()->id)->update([
+                'permission'=>0
+            ]);
+        }
+        return redirect()->back()->with('success', 'Permission Updated');
+    }
 }
