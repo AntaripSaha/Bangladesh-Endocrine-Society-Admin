@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 class DashboardController extends Controller
@@ -32,7 +33,19 @@ class DashboardController extends Controller
         return view('admin.dashboard',compact('users'));
     }
     public function status($id, $status){
-        User::where('id', $id)->update(array( 'status' => $status));
+        if($status == 0 || $status == 1){
+            User::where('id', $id)->update(array( 'status' => $status));
+        }else{
+            Personal_Information::where('user_id', $id)->delete();
+            Payments_Info::where('user_id', $id)->delete();
+            Essential_Information::where('user_id', $id)->delete();
+            Associate_Member::where('user_id', $id)->delete();
+            Current_Organization::where('user_id', $id)->delete();
+            Current_Appoinment::where('user_id', $id)->delete();
+            User_Area_of_Interests::where('user_id', $id)->delete();
+            File_Upload::where('user_id', $id)->delete();
+            User::where('id', $id)->delete();
+        }
         return redirect()->back()->with('success', 'User Status Changed Successfully');
     }
     public function user_details($id){
