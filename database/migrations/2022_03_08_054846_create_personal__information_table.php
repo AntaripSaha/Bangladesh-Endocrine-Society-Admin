@@ -29,6 +29,7 @@ class CreatePersonalInformationTable extends Migration
             $table->string('nid');
             $table->string('image');
             $table->longText('address');
+            $table->string('permission')->default(0);
             $table->timestamps();
         });
     }

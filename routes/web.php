@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\user\DashboardController as UserDashboardController;
+use App\Http\Controllers\user\PermissionController;
 use App\Http\Controllers\user\UserListController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -42,10 +43,7 @@ Route::get('/home', function () {
 //     return view('loginv2');
 // })->name('adlogin');
 
-
-
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::middleware('user')->group(function () {
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::any('/user/information/add', [UserDashboardController::class, 'personal_info_store'])->name('user.information');
@@ -79,16 +77,16 @@ Route::middleware('user')->group(function () {
     Route::any('/user/area_clinical_interests/store', [UserDashboardController::class, 'area_store'])->name('area.store');
     Route::any('/user/area_clinical_interests/details/{id}', [UserDashboardController::class, 'area_details'])->name('area.details');
     // Area Section End
-   
-   
-    Route::any('/permission',[UserDashboardController::class, 'permission'])->name('user.permission');
-    
-    Route::any('/permission/essential/store/{value}',[UserDashboardController::class, 'permission_essential_store'])->name('user.permission.essential.store');
-    Route::any('/permission/active/store/{value}',[UserDashboardController::class, 'permission_active_store'])->name('user.permission.active.store');
-    
-    
-    
-    
+   // Permission Section Start
+    Route::any('/permission',[PermissionController::class, 'permission'])->name('user.permission');
+    Route::any('/permission/personal/store/{value}',[PermissionController::class, 'permission_personal_store'])->name('user.permission.personal.store');
+    Route::any('/permission/essential/store/{value}',[PermissionController::class, 'permission_essential_store'])->name('user.permission.essential.store');
+    Route::any('/permission/active/store/{value}',[PermissionController::class, 'permission_active_store'])->name('user.permission.active.store');
+    Route::any('/permission/file/store/{value}',[PermissionController::class, 'permission_file_store'])->name('user.permission.file.store');
+    Route::any('/permission/organization/store/{value}',[PermissionController::class, 'permission_organization_store'])->name('user.permission.organization.store');
+    Route::any('/permission/appoinment/store/{value}',[PermissionController::class, 'permission_appoinment_store'])->name('user.permission.appoinment.store');
+    Route::any('/permission/area/store/{value}',[PermissionController::class, 'permission_area_store'])->name('user.permission.area.store');
+    // Permission Section End
     // All User List Start
     Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');
     // All User List End
@@ -100,7 +98,6 @@ Route::middleware('user')->group(function () {
     // Final Section Start
     Route::any('/complete', [UserDashboardController::class, 'final'])->name('final');
     // Final Section End
-
 });
 
 Route::prefix('admin')->middleware('admin')->group(function () {
@@ -115,7 +112,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Download PDF
     Route::any('member/download/{id}', [DashboardController::class, 'download'])->name('member.download');
 
-
     // // User Routes Start
     // Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('admin.user.dashboard');
     // Route::any('/information/add', [UserDashboardController::class, 'personal_info_store'])->name('admin.user.information');
@@ -126,5 +122,4 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('admin.file.attach');
     // Route::any('/file/add',[UserDashboardController::class, 'file'])->name('admin.file.add');
     // // User Routes End
-
 });

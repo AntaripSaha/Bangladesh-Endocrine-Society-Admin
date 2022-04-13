@@ -44,12 +44,12 @@ class UserListController extends Controller
         return view('user.user_list');
     }
     public function user_information($id){
-        $personal_information = Personal_Information::where('user_id', $id)->get();
-        $essential_informations = Essential_Information::where('user_id', $id)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
-        $area_id = User_Area_of_Interests::where('user_id', $id)->get();
+        $personal_information = Personal_Information::where('user_id', $id)->where('permission',1)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('permission',1)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('permission',1)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('permission',1)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('permission',1)->get();
+        $area_id = User_Area_of_Interests::where('user_id', $id)->where('permission',1)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
@@ -58,7 +58,6 @@ class UserListController extends Controller
         return view('user.user_details', compact('personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
-
     public function user_list_search(Request $req){
         $users = DB::table('users')
                     ->where('admin', 0)
@@ -70,7 +69,4 @@ class UserListController extends Controller
                     ->paginate(2);
         return view('user.user_list',compact('users'));
     }
-
-   
-
 }

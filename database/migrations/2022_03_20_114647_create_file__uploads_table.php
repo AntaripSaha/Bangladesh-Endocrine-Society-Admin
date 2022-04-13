@@ -20,6 +20,7 @@ class CreateFileUploadsTable extends Migration
             $table->string('certificate_all_degree');
             $table->string('active_perticipation')->nullable();
             $table->string('user_id')->unique();
+            $table->string('permission')->default(0);
             $table->timestamps();
         });
     }
