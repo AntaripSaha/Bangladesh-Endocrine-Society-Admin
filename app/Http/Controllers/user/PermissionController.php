@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area_Category;
 use Illuminate\Http\Request;
 use App\Models\Essential_Information;
 use App\Models\Associate_Member;
@@ -122,5 +123,20 @@ class PermissionController extends Controller
             ]);
         }
         return redirect()->back()->with('success', 'Permission Updated');
+    }
+    public function update($id){
+        $personal_information = Personal_Information::where('user_id', $id)->where('permission',1)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('permission',1)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('permission',1)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('permission',1)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('permission',1)->get();
+        $area_id = User_Area_of_Interests::where('user_id', $id)->where('permission',1)->get();
+        $area_name = [];
+        foreach($area_id as $key=>$id){
+            $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
+            array_push($area_name,  $area_of_interests);
+        }
+        return view('user.user_edit', compact('personal_information', 'essential_informations', 
+        'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
 }

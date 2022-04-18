@@ -19,30 +19,22 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 Auth::routes();
 Route::get('/clear_cache', function () {
-
     Artisan::call('cache:clear');
-
     dd("Cache is cleared");
-
 });
-
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
     return redirect()->back()->with('success', ' Your site Rebooted Successfully...');
 });
-
 Route::get('/', function(){
     return view('auth.register');
 })->name('reg');
-
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
-
 // Route::get('/adlogin', function(){
 //     return view('loginv2');
 // })->name('adlogin');
-
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('user')->group(function () {
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
@@ -87,6 +79,9 @@ Route::middleware('user')->group(function () {
     Route::any('/permission/appoinment/store/{value}',[PermissionController::class, 'permission_appoinment_store'])->name('user.permission.appoinment.store');
     Route::any('/permission/area/store/{value}',[PermissionController::class, 'permission_area_store'])->name('user.permission.area.store');
     // Permission Section End
+    // User Edit
+    Route::any('/edit/details/{id}', [PermissionController::class, 'update'])->name('user.edit');
+    // User Edit
     // All User List Start
     Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');
     // All User List End

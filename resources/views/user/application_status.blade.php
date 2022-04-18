@@ -24,6 +24,7 @@
                               <th>Trx ID</th>
                               <th>Payment Date</th>
                               <th>File</th>
+                              <th>Action</th>
                               <th>Status</th>
                             </tr>
                           </thead>
@@ -45,6 +46,9 @@
                               @else
                               @endif
                            
+                              </td>
+                              <td style="width:250px">
+                              <a href="{{route('user.edit', ['id'=>$user->id])}}" class="btn btn-outline-info btn-sm" >Edit</a>                           
                               </td>
                               <td style="width:250px">
                               <!-- Example single danger button -->
