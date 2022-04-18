@@ -9,12 +9,16 @@ use App\Models\Associate_Member;
 use App\Models\Current_Appoinment;
 use App\Models\Current_Organization;
 use App\Models\File_Upload;
+use App\Models\Payments_Info;
 use App\Models\Personal_Information;
+use App\Models\User;
 use App\Models\User_Area_of_Interests;
 
 class PermissionController extends Controller
 {
     public function permission(){
+        $users = User::where('id', auth()->user()->id)->get();
+        $payments = Payments_Info::where('user_id', $users[0]->id)->get();
         $personal = Personal_Information::where('user_id',auth()->user()->id)->select('permission')->first();
         $essential_info = Essential_Information::where('user_id',auth()->user()->id)->select('permission')->first();
         $active = Associate_Member::where('user_id',auth()->user()->id)->select('permission')->first();
@@ -22,7 +26,11 @@ class PermissionController extends Controller
         $organization = Current_Organization::where('user_id',auth()->user()->id)->select('permission')->first();
         $appoinment = Current_Appoinment::where('user_id',auth()->user()->id)->select('permission')->first();
         $area = User_Area_of_Interests::where('user_id',auth()->user()->id)->select('permission')->first();
-        return view('user.permission', compact('personal','essential_info','active','file','organization','appoinment','area'));
+        if($payments->isEmpty()){
+            return redirect()->back()->with('error', 'Please Complete The Form First.');
+        }else{
+            return view('user.permission', compact('personal','essential_info','active','file','organization','appoinment','area'));
+        }
     }
     public function permission_personal_store($value){
         // return $value;
