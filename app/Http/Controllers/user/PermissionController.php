@@ -125,12 +125,12 @@ class PermissionController extends Controller
         return redirect()->back()->with('success', 'Permission Updated');
     }
     public function update($id){
-        $personal_information = Personal_Information::where('user_id', $id)->where('permission',1)->get();
-        $essential_informations = Essential_Information::where('user_id', $id)->where('permission',1)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->where('permission',1)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->where('permission',1)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('permission',1)->get();
-        $area_id = User_Area_of_Interests::where('user_id', $id)->where('permission',1)->get();
+        $personal_information = Personal_Information::where('user_id', $id)->first();
+        $essential_informations = Essential_Information::where('user_id', $id)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        $area_id = User_Area_of_Interests::where('user_id', $id)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
