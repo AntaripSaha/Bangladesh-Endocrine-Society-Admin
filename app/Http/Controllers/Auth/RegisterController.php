@@ -40,6 +40,12 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function rules()
+    {
+        return [
+        'password' => ['required', 'min:6', 'confirmed']
+        ];
+    }
 
     /**
      * Get a validator for an incoming registration request.

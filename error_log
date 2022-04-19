@@ -1,0 +1,1 @@
+[04-Apr-2022 03:21:52 America/Chicago] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 5.6.38. in /home2/wwwbesorg/member.bes.org.bd/vendor/composer/platform_check.php on line 25

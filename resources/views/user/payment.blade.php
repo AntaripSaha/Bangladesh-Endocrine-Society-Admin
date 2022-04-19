@@ -29,7 +29,7 @@
                           <td>1</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" name="checkbox" value="Package One" checked>
+                                <input type="radio" id="radioPrimary1" name="checkbox" value="General Member" checked>
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -42,7 +42,7 @@
                           <td>2</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" value="Package Two" name="checkbox" >
+                                <input type="radio" id="radioPrimary1" value="Life Member" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -55,7 +55,7 @@
                           <td>3</td>
                           <td>
                             <div class="icheck-primary d-inline">
-                                <input type="radio" id="radioPrimary1" value="Package Three" name="checkbox" >
+                                <input type="radio" id="radioPrimary1" value="Associate Member" name="checkbox" >
                                 <label for="radioPrimary1">
                                 </label>
                             </div>
@@ -118,11 +118,11 @@
             <button type="submit" class="btn btn-outline-info btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
               Save All
             </button>
-            <a href="{{route('area')}}">
-              <button class="btn btn-outline-success btn-sm" style="margin-left: 19px;width: 110px;margin-bottom: 50px; !important;" type="button">
-                Next Page
-              </button>
-            </a>
+            <!--<a href="{{route('area')}}">-->
+            <!--  <button class="btn btn-outline-success btn-sm" style="margin-left: 19px;width: 110px;margin-bottom: 50px; !important;" type="button">-->
+            <!--    Next Page-->
+            <!--  </button>-->
+            <!--</a>-->
         </form>
     </div>
 </div>

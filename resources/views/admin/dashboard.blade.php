@@ -58,6 +58,10 @@
                                   <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                       Unapproved
                                   </button>
+                                  @elseif($user->status == 2)
+                                  <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Reject
+                                  </button>
                                   @else
                                   <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                       Approved
@@ -66,15 +70,22 @@
                                   <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" href="{{route('admin.dashboard.status', ['status'=> 1, 'id' => $user->id ])}}" >Approve</a></li>
                                       <li><a class="dropdown-item" href="{{route('admin.dashboard.status', ['status'=> 0, 'id' => $user->id ])}}">Unapprove</a></li>
+                                      <li><a class="dropdown-item"  onclick="return myFunction();" href="{{route('admin.dashboard.status', ['status'=> 2, 'id' => $user->id ])}}">Reject</a></li>
                                   </ul>
                               </div>
                               </td>
                               <td>
+                                @if($user->membership_category)
                                 <a href="{{route('admin.user.details', ['id'=>$user->id])}}">
-                                  <button type="button" class="btn btn-outline-info btn-sm" >
+                                  <button type="button"  class="btn btn-inverse btn-outline-info btn-sm" >
                                       View
                                   </button>
                                 </a>
+                                @else
+                                <button type="button" class="btn btn-inverse btn-outline-danger btn-sm" >
+                                  Not Available
+                                </button>
+                                @endif
                               </td>
                             </tr>
                             @php

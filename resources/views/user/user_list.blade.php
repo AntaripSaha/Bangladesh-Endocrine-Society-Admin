@@ -6,7 +6,7 @@
             <form action="{{route('user.list.search')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <input type="text" placeholder="Search Here" class="form-control" name="data" style="width: 30% ; margin-top: 1%;">
-                <button type="submit" class="btn btn-outline-info btn-sm" style="margin-left: 30% ; margin-top: -6%;">
+                <button type="submit" class="btn btn-outline-info btn-sm" style="margin-left: 0% ; margin-top: 0%; margin-bottom: 1%;">
                   Search
                 </button>
             </form>
@@ -64,7 +64,6 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-    
           </form>
           </div>
         </div>

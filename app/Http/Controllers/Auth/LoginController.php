@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Auth;
+
 
 class LoginController extends Controller
 {
@@ -54,7 +53,9 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             if(auth()->user()->admin == 0){
-                return redirect()->route('user.dashboard');
+                return redirect()->route('application.status');
+            }else{
+                return redirect()->route('home');
             }
         }else{
             return redirect()->route('login')->with('error','Email-Address And Password Are Wrong.');

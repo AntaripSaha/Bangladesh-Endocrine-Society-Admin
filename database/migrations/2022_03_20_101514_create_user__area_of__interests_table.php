@@ -17,6 +17,7 @@ class CreateUserAreaOfInterestsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('area_id');
+            $table->string('permission')->default(0);
             $table->timestamps();
         });
     }

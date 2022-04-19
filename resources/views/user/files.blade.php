@@ -358,11 +358,11 @@
             <button type="submit" class="btn btn-outline-info btn-sm" onclick="return savefunction();" style="width: 90px;margin-bottom: 50px; margin-left: 21px;">
               Save All
             </button>
-            <a href="{{route('payment')}}">
-              <button class="btn btn-outline-success btn-sm" style="margin-left: 19px;width: 110px;margin-bottom: 50px; !important;" type="button">
-                Next Page
-              </button>
-            </a>
+            <!--<a href="{{route('payment')}}">-->
+            <!--  <button class="btn btn-outline-success btn-sm" style="margin-left: 19px;width: 110px;margin-bottom: 50px; !important;" type="button">-->
+            <!--    Next Page-->
+            <!--  </button>-->
+            <!--</a>-->
           </form>
         </div>
       </div>

@@ -22,6 +22,7 @@ class CreateEssentialInformationTable extends Migration
             $table->string('university')->nullable();
             $table->string('bmdc_reg_no')->nullable();
             $table->string('bmdc_reg_year')->nullable();
+            $table->string('permission')->default(0);
             $table->timestamps();
         });
     }

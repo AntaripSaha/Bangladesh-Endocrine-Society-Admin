@@ -65,8 +65,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="{{asset('backend/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Dashboard</span>
+      <span class="brand-text font-weight-light" style="margin-left: 10%"><b>BES</b> Dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -91,6 +90,14 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Form
+              </p>
+            </a>
+          </li>    
+          <li class="{{ (request()->is('permission')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('user.permission')}}" class="nav-link">
+              <i class="nav-icon fas fa-shield-alt"></i>
+              <p>
+                Permissions
               </p>
             </a>
           </li>    

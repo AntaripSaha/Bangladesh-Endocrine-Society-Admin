@@ -46,6 +46,11 @@ class DashboardController extends Controller
             $personal_information->email = $req->email;
             $personal_information->nid = $req->nid;
             $personal_information->address = $req->address;
+            if($req->file('image')){
+                $image = $req->file('image');
+                Storage::putFile('public/personal_image', $image);
+                $personal_information->image = "storage/personal_image/".$image->hashName();
+            }
             if($personal_information->save()){
                 return redirect()->route('essential.information')->with('success', 'Information Saved...');
             }
