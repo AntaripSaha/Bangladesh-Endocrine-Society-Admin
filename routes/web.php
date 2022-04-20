@@ -81,6 +81,7 @@ Route::middleware('user')->group(function () {
     // Permission Section End
     // User Edit
     Route::any('/edit/details/{id}', [PermissionController::class, 'update'])->name('user.edit');
+    Route::any('/edit/details', [PermissionController::class, 'update_store'])->name('user.edit.store');
     // User Edit
     // All User List Start
     Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');

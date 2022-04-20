@@ -139,4 +139,58 @@ class PermissionController extends Controller
         return view('user.user_edit', compact('personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
+    public function update_store(Request $req){
+        Personal_Information::where('id', $req->personal_info_id)
+                                ->update([
+                                    'first_name'=> $req->first_name,
+                                    'middle_name'=> $req->middle_name,
+                                    'last_name'=> $req->last_name,
+                                    'bith_date'=> $req->birth_date,
+                                    'gender'=> $req->gender,
+                                    'father_name'=> $req->father_name,
+                                    'mother_name'=> $req->mother_name,
+                                    'phone'=> $req->phone,
+                                    'tel'=> $req->tel,
+                                    'email'=> $req->email,
+                                    'nid'=> $req->nid,
+                                    'address'=> $req->address
+                                ]);
+        foreach($req->essential_info_id as $key=>$essential_info){
+            Essential_Information::where('id', $essential_info)
+                                    ->update([
+                                        'degree'=>$req->degree[$key],
+                                        'passing_year'=>$req->passing_year[$key],
+                                        'institutation'=>$req->institutation[$key],
+                                        'university'=>$req->university[$key],
+                                        'bmdc_reg_no'=>$req->bmdc_reg_no[$key],
+                                        'bmdc_reg_year'=>$req->bmdc_reg_yr[$key]
+                                    ]);
+        }                        
+        foreach($req->associate_member_id as $key=>$associate_info){
+            Associate_Member::where('id', $associate_info)
+                                    ->update([
+                                        'institute'=>$req->institute[$key],
+                                        'from'=>$req->from[$key],
+                                        'to'=>$req->to[$key],
+                                    ]);
+        }                        
+        foreach($req->current_appoinment_id as $key=>$current_appoinment_info){
+            Current_Appoinment::where('id', $current_appoinment_info)
+                                    ->update([
+                                        'designation'=>$req->ca_designation[$key],
+                                        'hospital'=>$req->ca_hospital[$key],
+                                        'from'=>$req->ca_from[$key],
+                                    ]);
+        }                        
+        foreach($req->current_organization_id as $key=>$current_organization_info){
+            Current_Organization::where('id', $current_organization_info)
+                                    ->update([
+                                        'name'=>$req->co_name[$key],
+                                        'position'=>$req->co_position[$key],
+                                    ]);
+        }                        
+
+        
+        return redirect()->back()->with('success', 'Updated Successfully');                      
+    }
 }
