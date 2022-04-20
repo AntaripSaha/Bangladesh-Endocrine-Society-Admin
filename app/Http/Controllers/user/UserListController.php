@@ -45,10 +45,10 @@ class UserListController extends Controller
     }
     public function user_information($id){
         $personal_information = Personal_Information::where('user_id', $id)->where('permission',1)->get();
-        $essential_informations = Essential_Information::where('user_id', $id)->where('permission',1)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->where('permission',1)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->where('permission',1)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('permission',1)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('permission',1)->where('deleted', 0)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('permission',1)->where('deleted', 0)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('permission',1)->where('deleted', 0)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('permission',1)->where('deleted', 0)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->where('permission',1)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){
