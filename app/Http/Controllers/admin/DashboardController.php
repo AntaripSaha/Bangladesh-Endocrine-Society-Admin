@@ -52,10 +52,10 @@ class DashboardController extends Controller
         $pdf_id = $id;
         $payment_information = Payments_Info::where('user_id', $id)->get();
         $personal_information = Personal_Information::where('user_id', $id)->get();
-        $essential_informations = Essential_Information::where('user_id', $id)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('deleted', 0)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('deleted', 0)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('deleted', 0)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
         $file_uploads = File_Upload::where('user_id', $id)->get();
         $area_name = [];
@@ -81,11 +81,11 @@ class DashboardController extends Controller
     }
     public function download($id){        
         $personal_information = Personal_Information::where('user_id', $id)->get();
-        $essential_informations = Essential_Information::where('user_id', $id)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('deleted', 0)->get();
         $payment_information = Payments_Info::where('user_id', $id)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('deleted', 0)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('deleted', 0)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){

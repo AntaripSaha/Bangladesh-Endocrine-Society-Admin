@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\UserEditController;
 use App\Http\Controllers\user\DashboardController as UserDashboardController;
 use App\Http\Controllers\user\PermissionController;
 use App\Http\Controllers\user\UserListController;
@@ -124,4 +125,16 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::any('/file/attach',[UserDashboardController::class, 'file'])->name('admin.file.attach');
     // Route::any('/file/add',[UserDashboardController::class, 'file'])->name('admin.file.add');
     // // User Routes End
+
+
+        // User Edit Start
+        Route::any('/edit/details/{id}', [UserEditController::class, 'update'])->name('admin.user.edit');
+        Route::any('/edit/details', [UserEditController::class, 'update_store'])->name('admin.user.edit.store');
+        // User Edit End
+        //user info delete Start
+        Route::any('/essential/info/delete/{id}', [UserEditController::class, 'essential_info_delete'])->name('admin.essential.info.delete');
+        Route::any('/associate/info/delete/{id}', [UserEditController::class, 'associate_info_delete'])->name('admin.associate.info.delete');
+        Route::any('/appoinment/info/delete/{id}', [UserEditController::class, 'appoinment_info_delete'])->name('admin.appoinment.info.delete');
+        Route::any('/organization/info/delete/{id}', [UserEditController::class, 'organization_info_delete'])->name('admin.organization.info.delete');
+        //user info delete End
 });
