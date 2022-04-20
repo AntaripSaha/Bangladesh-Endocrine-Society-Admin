@@ -16,10 +16,8 @@
         <div class="container-fluid">
             <!--/.row -->
             <div class="row">
-
               <form action="{{route('user.edit.store')}}" enctype="multipart/form-data" method="POST">
                 @csrf
-
                 <div class="col-12">
                   <div class="card card-info">
                     <div class="card-header">
@@ -49,7 +47,7 @@
                             <label class="required" >Date of Birth: </label>
                           </div>
                           <div class="col-4">
-                            <input type="date" class="form-control" name="birth_date" required  value="{{$personal_information->bith_date}}">
+                            <input type="date" class="form-control" name="birth_date" value="{{$personal_information->bith_date}}" required>
                           </div>
                           <div class="col-2">
                             <label class="required">Gender: </label>
@@ -99,7 +97,7 @@
                                 <label class="required">Phone: </label>
                               </div>
                               <div class="col-5">
-                                <input type="text" class="form-control" placeholder="phone" name="phone" required  value="{{$personal_information->phone}}"> 
+                                <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$personal_information->phone}}" required> 
                               </div>
                               <div class="col-5">
                                 <input type="text" class="form-control" placeholder="phone" name="tel"  value="{{$personal_information->tel}}"> 
@@ -155,7 +153,6 @@
                   </div>
                   
                 </div>
-                
                 <div class="col-12">
                   <div class="card card-info">
                     <div class="card-header">
@@ -173,6 +170,7 @@
                             <th>University</th>
                             <th>BMDC Reg No.</th>
                             <th>BMDC Reg Year</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -187,10 +185,10 @@
                               <input type="text" class="form-control" name="degree[]" value="{{$information->degree}}">
                             </td>
                             <td>
-                              <input type="text" class="form-control" name="passing_year[]" value="{{$information->passing_year}}">
+                              <input type="text" class="form-control" name="passing_year[]" value="{{$information->passing_year}}" required>
                             </td>
                             <td>
-                              <input type="text" class="form-control" name="institutation[]" value="{{$information->institutation}}">
+                              <input type="text" class="form-control" name="institutation[]" value="{{$information->institutation}}" required>
                             </td>
                             <td>
                               <textarea name="university[]" id="" class="form-control" cols="30" rows="2">{{$information->university}}</textarea>
@@ -200,6 +198,13 @@
                             </td>
                             <td>
                               <input type="text" class="form-control" name="bmdc_reg_yr[]" value="{{$information->bmdc_reg_year}}">
+                            </td>
+                            <td>
+                              <a href="{{route('essential.info.delete', ['id'=>$information->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm"  onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
                             </td>
                           </tr>
                           @php
@@ -228,6 +233,7 @@
                             <th>Institutation</th>
                             <th>From</th>
                             <th>To</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -239,13 +245,20 @@
                             <td style="width: 10%">{{$i}}</td>
                             <td style="width: 20%">
                               <input type="hidden" name="associate_member_id[]" value="{{$information->id}}">
-                              <input type="text" class="form-control" name="institute[]" value="{{$information->institute}}">
+                              <input type="text" class="form-control" name="institute[]" value="{{$information->institute}}" required>
                             </td>
                             <td style="width: 20%">
-                              <input type="date" class="form-control" name="from[]" value="{{$information->from}}">
+                              <input type="date" class="form-control" name="from[]" value="{{$information->from}}" required>
                             </td>
                             <td style="width: 30%">
                               <input type="date" class="form-control" name="to[]" value="{{$information->to}}">
+                            </td>
+                            <td style="width: 20%">
+                              <a href="{{route('associate.info.delete', ['id'=>$information->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm"  onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
                             </td>
                           </tr>
                           @php
@@ -274,6 +287,7 @@
                             <th>Designation</th>
                             <th>Hospital</th>
                             <th>From</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -285,13 +299,20 @@
                             <td style="width: 10%">{{$i}}</td>
                             <td style="width: 20%">
                               <input type="hidden" name="current_appoinment_id[]" value="{{$information->id}}">
-                              <input type="text" class="form-control" name="ca_designation[]" value="{{$information->designation}}">
+                              <input type="text" class="form-control" name="ca_designation[]" value="{{$information->designation}}" required>
                             </td>
                             <td style="width: 20%">
-                              <input type="text" class="form-control" name="ca_hospital[]" value="{{$information->hospital}}">
+                              <input type="text" class="form-control" name="ca_hospital[]" value="{{$information->hospital}}" required>
                             </td>
                             <td style="width: 30%">
-                              <input type="date" class="form-control" name="ca_from[]" value="{{$information->from}}">
+                              <input type="date" class="form-control" name="ca_from[]" value="{{$information->from}}" required>
+                            </td>
+                            <td style="width: 20%">
+                              <a href="{{route('appoinment.info.delete', ['id'=>$information->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm"  onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
                             </td>
                           </tr>
                           @php
@@ -319,6 +340,7 @@
                             <th>S/L</th>
                             <th>Organization</th>
                             <th>Position</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -328,12 +350,19 @@
                           @foreach($current_organizations as $information)
                           <tr>
                             <td style="width: 20%">{{$i}}</td>
-                            <td style="width: 40%">
+                            <td style="width: 30%">
                               <input type="hidden" name="current_organization_id[]" value="{{$information->id}}">
-                              <input type="text" class="form-control" name="co_name[]" value="{{$information->name}}">
+                              <input type="text" class="form-control" name="co_name[]" value="{{$information->name}}" required>
                             </td>
-                            <td style="width: 40%">
-                              <input type="text" class="form-control" name="co_position[]" value="{{$information->position}}">
+                            <td style="width: 30%">
+                              <input type="text" class="form-control" name="co_position[]" value="{{$information->position}}" required>
+                            </td>
+                            <td style="width: 20%">
+                              <a href="{{route('organization.info.delete', ['id'=>$information->id])}}">
+                                <button type="button" class="btn btn-outline-danger btn-sm"  onclick="return myFunction();">
+                                  Delete
+                                </button>
+                              </a>
                             </td>
                           </tr>
                           @php
@@ -353,9 +382,7 @@
                     Save All
                   </button>
                 </div>
-
               </form>
-
               {{-- <div class="col-12">
                 <div class="card card-success">
                   <div class="card-header">
@@ -391,10 +418,6 @@
                 </div>
                 <!-- /.card -->
               </div> --}}
-
-
-
-
             </div>
           </div>
     </div>

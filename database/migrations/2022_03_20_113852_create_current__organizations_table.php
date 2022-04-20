@@ -19,6 +19,7 @@ class CreateCurrentOrganizationsTable extends Migration
             $table->string('position');
             $table->string('user_id');
             $table->string('permission')->default(0);
+            $table->string('deleted')->default(0);
             $table->timestamps();
         });
     }

@@ -79,10 +79,16 @@ Route::middleware('user')->group(function () {
     Route::any('/permission/appoinment/store/{value}',[PermissionController::class, 'permission_appoinment_store'])->name('user.permission.appoinment.store');
     Route::any('/permission/area/store/{value}',[PermissionController::class, 'permission_area_store'])->name('user.permission.area.store');
     // Permission Section End
-    // User Edit
+    // User Edit Start
     Route::any('/edit/details/{id}', [PermissionController::class, 'update'])->name('user.edit');
     Route::any('/edit/details', [PermissionController::class, 'update_store'])->name('user.edit.store');
-    // User Edit
+    // User Edit End
+    //user info delete Start
+    Route::any('/essential/info/delete/{id}', [PermissionController::class, 'essential_info_delete'])->name('essential.info.delete');
+    Route::any('/associate/info/delete/{id}', [PermissionController::class, 'associate_info_delete'])->name('associate.info.delete');
+    Route::any('/appoinment/info/delete/{id}', [PermissionController::class, 'appoinment_info_delete'])->name('appoinment.info.delete');
+    Route::any('/organization/info/delete/{id}', [PermissionController::class, 'organization_info_delete'])->name('organization.info.delete');
+    //user info delete End
     // All User List Start
     Route::any('/application/status', [UserListController::class, 'application_status'])->name('application.status');
     // All User List End

@@ -20,6 +20,7 @@ class CreateCurrentAppoinmentsTable extends Migration
             $table->string('from');
             $table->string('user_id');
             $table->string('permission')->default(0);
+            $table->string('deleted')->default(0);
             $table->timestamps();
         });
     }

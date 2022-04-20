@@ -96,8 +96,8 @@
                               @endforeach
                             </select>
                           </td>
-                          <td><input class="form-control" name="passing_year" type="text"></td>
-                          <td><input class="form-control" name="institutation" type="text"></td>
+                          <td><input class="form-control" name="passing_year" type="text" required></td>
+                          <td><input class="form-control" name="institutation" type="text" required></td>
                           <td><input class="form-control" name="university" type="text"></td>
                           <td><input class="form-control" name="bmdc_reg_no" type="text"></td>
                           <td><input class="form-control" name="bmdc_reg_year" type="text"></td>

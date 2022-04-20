@@ -126,10 +126,10 @@ class PermissionController extends Controller
     }
     public function update($id){
         $personal_information = Personal_Information::where('user_id', $id)->first();
-        $essential_informations = Essential_Information::where('user_id', $id)->get();
-        $associate_members = Associate_Member::where('user_id', $id)->get();
-        $current_organizations = Current_Organization::where('user_id', $id)->get();
-        $current_appoinments = Current_Appoinment::where('user_id', $id)->get();
+        $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
+        $associate_members = Associate_Member::where('user_id', $id)->where('deleted', 0)->get();
+        $current_organizations = Current_Organization::where('user_id', $id)->where('deleted', 0)->get();
+        $current_appoinments = Current_Appoinment::where('user_id', $id)->where('deleted', 0)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
         $area_name = [];
         foreach($area_id as $key=>$id){
@@ -189,8 +189,34 @@ class PermissionController extends Controller
                                         'position'=>$req->co_position[$key],
                                     ]);
         }                        
-
-        
         return redirect()->back()->with('success', 'Updated Successfully');                      
+    }
+    public function essential_info_delete($id){
+        Essential_Information::where('id', $id)
+                                ->update([
+                                    'deleted'=>1,
+                                ]);
+        return redirect()->back()->with('danger', 'Data Deleted Successfully');
+    }
+    public function associate_info_delete($id){
+        Associate_Member::where('id', $id)
+                                ->update([
+                                    'deleted'=>1,
+                                ]);
+        return redirect()->back()->with('danger', 'Data Deleted Successfully');
+    }
+    public function appoinment_info_delete($id){
+        Current_Appoinment::where('id', $id)
+                                ->update([
+                                    'deleted'=>1,
+                                ]);
+        return redirect()->back()->with('danger', 'Data Deleted Successfully');
+    }
+    public function organization_info_delete($id){
+        Current_Organization::where('id', $id)
+                                ->update([
+                                    'deleted'=>1,
+                                ]);
+        return redirect()->back()->with('danger', 'Data Deleted Successfully');
     }
 }
