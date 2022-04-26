@@ -15,11 +15,13 @@ use App\Models\Personal_Information;
 use App\Models\User;
 use App\Models\User_Area_of_Interests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserEditController extends Controller
 {
     public function update($id){
-        $personal_information = Personal_Information::where('user_id', $id)->first();
+        $personal_information = Personal_Information::where('user_id', $id)->first();        
         $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
         $associate_members = Associate_Member::where('user_id', $id)->where('deleted', 0)->get();
         $current_organizations = Current_Organization::where('user_id', $id)->where('deleted', 0)->get();
@@ -34,6 +36,15 @@ class UserEditController extends Controller
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
     public function update_store(Request $req){
+        
+        if($req->file('image')){
+            $image = $req->file('image');
+            Storage::putFile('public/personal_image', $image);
+            Personal_Information::where('id', $req->personal_info_id)
+                                ->update([
+                                    'image'=> "storage/personal_image/".$image->hashName()
+                                ]);
+        }
         if($req->personal_info_id){
             Personal_Information::where('id', $req->personal_info_id)
                                 ->update([

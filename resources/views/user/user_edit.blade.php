@@ -26,6 +26,17 @@
                     <div class="card-body">
                       <div class="form-group">
                         <div class="row">
+                          <div class="col-2">
+                            <label class="required">Profile Picture: </label>
+                          </div>
+                          <div class="col-8">
+                            <input type="file" name="image" value="">
+                          </div>
+                          <img class="img" src="{{url($personal_information->image)}}" height="180px" width="160px" alt="">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
                             <div class="col-2">
                               <label class="required">Name in Full:  </label>
                             </div>
@@ -137,17 +148,6 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-2">
-                            <label class="required">Image: </label>
-                          </div>
-                          <div class="col-8">
-                            <input type="file" name="image" value="{{$personal_information->image}}">
-                          </div>
-                        </div>
-                      </div>
-                      
                     </div>
                     {{-- card body --}}
                   </div>

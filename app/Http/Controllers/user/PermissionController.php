@@ -14,6 +14,8 @@ use App\Models\Payments_Info;
 use App\Models\Personal_Information;
 use App\Models\User;
 use App\Models\User_Area_of_Interests;
+use Illuminate\Support\Facades\Storage;
+
 
 class PermissionController extends Controller
 {
@@ -140,6 +142,14 @@ class PermissionController extends Controller
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
     public function update_store(Request $req){
+        if($req->file('image')){
+            $image = $req->file('image');
+            Storage::putFile('public/personal_image', $image);
+            Personal_Information::where('id', $req->personal_info_id)
+                                ->update([
+                                    'image'=> "storage/personal_image/".$image->hashName()
+                                ]);
+        }
         if($req->personal_info_id){
             Personal_Information::where('id', $req->personal_info_id)
                                 ->update([
