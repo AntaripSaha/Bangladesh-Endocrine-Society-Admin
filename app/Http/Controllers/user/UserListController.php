@@ -19,12 +19,13 @@ use Illuminate\Support\Facades\DB;
 class UserListController extends Controller
 {
     public function application_status(){
+        $personal_information = Personal_Information::where('id', auth()->user()->id)->select('membership_id')->first();
         $users = User::where('id', auth()->user()->id)->get();
         $payments = Payments_Info::where('user_id', $users[0]->id)->get();
         if($payments->isEmpty()){
             return redirect()->back()->with('error', 'Please Complete The Form First.');
         }else{
-            return view('user.application_status', compact('users','payments'));
+            return view('user.application_status', compact('users','payments', 'personal_information'));
         }
     }
     public function user_list(){

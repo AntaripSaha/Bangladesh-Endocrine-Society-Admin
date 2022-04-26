@@ -11,7 +11,7 @@
                   <div class="col-12">
                     <div class="card card-secondary">
                       <div class="card-header">
-                        <h3 class="card-title">Users List</h3>
+                        <h3 class="card-title">Application Status</h3>
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body table-responsive p-0">
@@ -19,7 +19,8 @@
                           <thead>
                             <tr>
                               <th>ID</th>
-                              <th>Name of User's</th>
+                              <th>Name</th>
+                              <th>Member No.</th>
                               <th>Category</th>
                               <th>Trx ID</th>
                               <th>Payment Date</th>
@@ -36,6 +37,7 @@
                             <tr>
                               <td>{{$i}}</td>
                               <td style="width:250px">{{$user->name}}</td>
+                              <td style="width:250px">{{$personal_information->membership_id}}</td>
                               <td style="width:250px">{{$payments[$key]->membership_category}}</td>
                               <td style="width:250px">{{$payments[$key]->trx_id}}</td>
                               <td style="width:250px">{{$payments[$key]->date}}</td>

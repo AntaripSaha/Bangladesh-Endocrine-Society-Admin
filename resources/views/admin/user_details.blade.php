@@ -4,7 +4,22 @@
     <div>
         <div class="container-fluid">
             <!--/.row -->
-            <div class="row">                
+            <div class="row">
+              <div class="col-12">
+                <div class="card card-secondary">
+                  <div class="card-header">
+                    <h3 class="card-title">Membership Number for This Member.</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+
+                    <input type="text" class="form-control" name="membership_id" value="{{$personal_information[0]->membership_id}}" readonly>
+               
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>                
                 <div class="col-12">
                   <div class="card card-success">
                     <div class="card-header">

@@ -17,6 +17,13 @@
       margin-bottom: 10%;
       color: rgb(133, 40, 40);
     }
+    .member{
+      margin-left: 34%;
+      width: 100%;
+      margin-bottom: 0%;
+      margin-top: -8%;
+      color: rgb(45, 119, 84);
+    }
     .img{
       padding: 2%;
       margin-left: 0%;
@@ -69,6 +76,7 @@
 <body>
   <h1 class="title">{{$title}}</h1>
   <h2 class="sub_title">{{$sub_title}}</h2>
+  <h3 class="member">Membership No. {{$personal_information[0]->membership_id}}</h3>
   <img class="img" src="{{$personal_information[0]->image}}" height="150px" width="150px" alt="">
   <!-- Personal Information Start -->
   <div>
