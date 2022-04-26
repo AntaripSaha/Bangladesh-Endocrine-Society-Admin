@@ -38,7 +38,7 @@
               <div class="col-2">
                 <label class="required">Gender: </label>
               </div>
-              <div class="form-group col-2">
+              <div class="form-group col-2" style="margin-left: -2%; !important">
                 <div class="form-check">
                   <input class="form-check-input" type="radio"  name="gender" value="male">
                   <label class="form-check-label">Male </label>
@@ -53,17 +53,17 @@
           <div class="form-group">
             <div class="row">
               <div class="col-2">
-                <label>Father's Name:</label>
+                <label>Spouse Name:</label>
               </div>
-              <div class="col-4">
+              <div class="col-6">
                 <input type="text" class="form-control" placeholder="Full Name" name="father_name">
               </div>
-              <div class="col-2">
-                <label>Mother's Name:</label>
-              </div>
-              <div class="col-4">
-                <input type="text" class="form-control" placeholder="Full Name" name="mother_name" >
-              </div>
+              <!--<div class="col-2">-->
+              <!--  <label>Mother's Name:</label>-->
+              <!--</div>-->
+              <!--<div class="col-4">-->
+              <!--  <input type="text" class="form-control" placeholder="Full Name" name="mother_name" >-->
+              <!--</div>-->
             </div>
           </div>
           <div class="form-group">
@@ -92,17 +92,17 @@
           <div class="form-group">
             <div class="row">
               <div class="col-2">
-                <label >National ID No:</label>
+                <label class="required" >National ID No:</label>
               </div>
               <div class="col-10">
-                <input type="text" class="form-control" id="" name="nid" placeholder="Enter NID" >
+                <input type="text" class="form-control" id="" name="nid" placeholder="Enter NID" required>
               </div>
             </div>
           </div>
           <div class="form-group">
             <div class="row">
               <div class="col-2">
-                <label class="required">Present/Mailling Address: </label>
+                <label class="required">Mailling Address: </label>
               </div>
               <div class="col-sm-10">
                 <!-- textarea -->
@@ -115,7 +115,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-2">
-                <label class="required">Image: </label>
+                <label class="required">Profile Picture: </label>
               </div>
               <div class="col-8">
                 <input type="file" name="image" required>
@@ -130,11 +130,15 @@
               Next Page
             </button>
           </a> --}}
+            <div style="margin-top: 5%; margin-left: 65%;">
+                <p> NB. <b style="color:red">*</b> Marks are Mandatory Field</p>
+            </div>
         </div>
         {{-- card body --}}
       </div>
     <!-- For Personale Information End-->
     </form>
+
   </div>
 </div>
 @endsection

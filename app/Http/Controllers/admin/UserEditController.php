@@ -48,7 +48,8 @@ class UserEditController extends Controller
                                     'tel'=> $req->tel,
                                     'email'=> $req->email,
                                     'nid'=> $req->nid,
-                                    'address'=> $req->address
+                                    'address'=> $req->address,
+                                    'membership_id'=>$req->membership_id
                                 ]);
         }
         if($req->essential_info_id){

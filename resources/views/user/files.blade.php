@@ -334,7 +334,7 @@
                         </tr>
                         <tr>
                           <td>3</td>
-                          <td class="required">Certificates of all Degree/Diploma<br>Fellowship/Postgraduation.</td>
+                          <td class="required">Certificates of MBBS/MD/FCPS/<br>Diploma/MD.RCPS<br>Fellowship/Postgraduation.</td>
                           <td>
                             <input type="file" name="degree" required>
                           </td>

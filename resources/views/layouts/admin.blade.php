@@ -20,6 +20,9 @@
       right: 120px;
       font-size: 15px;
   }
+  .color{
+    background-color: #007bff;
+  }
   </style>
 </head>
 
@@ -48,6 +51,9 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
             </form>
+            <a class="dropdown-item" href="#">
+             Change Password
+            </a>
           </div>
         </div>
       </li>
@@ -77,15 +83,40 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="{{route('admin.dashboard')}}" class="nav-link active">
+          <li class="{{ (request()->is('admin/dashboard')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('admin.dashboard')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
 
-          </li>    
+          </li>   
+          <li class="{{ (request()->is('admin/general/members')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('general.member')}}" class="nav-link">
+              <i class="nav-icon fas fa-user-friends"></i>
+              <p>
+                General Members
+              </p>
+            </a>
+          </li> 
+          <li class="{{ (request()->is('admin/life/members')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('life.member')}}" class="nav-link">
+              <i class="nav-icon fas fa-shield-alt"></i>
+              <p>
+                Life Members
+              </p>
+            </a>
+          </li> 
+          <li class="{{ (request()->is('admin/associate/members')) ? 'nav-item menu-open color' : '' }}">
+            <a href="{{route('associate.member')}}" class="nav-link">
+              <i class="nav-icon fas fa-pencil-alt"></i>
+              <p>
+                Associate Members
+              </p>
+            </a>
+          </li> 
+      
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

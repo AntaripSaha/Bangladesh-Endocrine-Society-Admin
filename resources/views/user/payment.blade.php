@@ -36,7 +36,7 @@
                           </td>
                           <td>General Member</td>
                           <td>1000</td>
-                          <td>For 2 Years</td>
+                          <td>Calender 2 Years</td>
                         </tr>
                         <tr>
                           <td>2</td>
@@ -49,7 +49,7 @@
                           </td>
                           <td>Life Member</td>
                           <td>10,000</td>
-                          <td>For Life Long</td>
+                          <td>One Time</td>
                         </tr>
                         <tr>
                           <td>3</td>
@@ -62,7 +62,7 @@
                           </td>
                           <td>Associate Member</td>
                           <td>600</td>
-                          <td>For 2 Years</td>
+                          <td>Calender 2 Years</td>
                         </tr>
                       </tbody>
                     </table>

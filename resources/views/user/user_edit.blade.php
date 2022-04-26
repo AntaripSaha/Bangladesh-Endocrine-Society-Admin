@@ -78,17 +78,17 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col-2">
-                            <label>Father's Name:</label>
+                            <label>Spouse Name:</label>
                           </div>
                           <div class="col-4">
                             <input type="text" class="form-control" placeholder="Full Name" name="father_name"  value="{{$personal_information->father_name}}">
                           </div>
-                          <div class="col-2">
-                            <label>Mother's Name:</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" placeholder="Full Name" name="mother_name"  value="{{$personal_information->mother_name}}" >
-                          </div>
+                          <!--<div class="col-2">-->
+                          <!--  <label>Mother's Name:</label>-->
+                          <!--</div>-->
+                          <!--<div class="col-4">-->
+                          <!--  <input type="text" class="form-control" placeholder="Full Name" name="mother_name"  value="{{$personal_information->mother_name}}" >-->
+                          <!--</div>-->
                         </div>
                       </div>
                       <div class="form-group">

@@ -89,12 +89,12 @@
         <p class="information"> {{$personal->bith_date }}</p>
         <h3 class="info_title">Gender:</h3>
         <p class="information"> {{$personal->gender }}</p>
-        <h3 class="info_title">Father:</h3>
+        <h3 class="info_title">Spouse:</h3>
         <p class="information"> {{$personal->father_name }}</p>
       </div>
-      <div style="margin-left:60%;">
-        <h3 class="info_title">Mother:</h3>
-        <p class="information">{{$personal->mother_name}}</p>
+      <div style="margin-left:60%; margin-bottom:5%">
+        {{-- <h3 class="info_title">Mother:</h3>
+        <p class="information">{{$personal->mother_name}}</p> --}}
         <h3 class="info_title">Tel:</h3>
         <p class="information">{{$personal->tel}}</p>
         <h3 class="info_title">NID:</h3>

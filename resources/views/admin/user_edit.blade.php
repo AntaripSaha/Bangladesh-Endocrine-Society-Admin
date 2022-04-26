@@ -78,17 +78,17 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col-2">
-                            <label>Father's Name:</label>
+                            <label>Spouse Name:</label>
                           </div>
                           <div class="col-4">
                             <input type="text" class="form-control" placeholder="Full Name" name="father_name"  value="{{$personal_information->father_name}}">
                           </div>
-                          <div class="col-2">
-                            <label>Mother's Name:</label>
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" placeholder="Full Name" name="mother_name"  value="{{$personal_information->mother_name}}" >
-                          </div>
+                          {{-- <!--<div class="col-2">-->
+                          <!--  <label>Mother's Name:</label>-->
+                          <!--</div>-->
+                          <!--<div class="col-4">-->
+                          <!--  <input type="text" class="form-control" placeholder="Full Name" name="mother_name"  value="{{$personal_information->mother_name}}" >--> --}}
+                          <!--</div>-->
                         </div>
                       </div>
                       <div class="form-group">
@@ -372,6 +372,21 @@
                         </tbody>
                       <!-- Button trigger modal -->
                       </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <div class="col-12">
+                  <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Enter Membership Number for This Member.</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                      <input type="text" class="form-control" name="membership_id" value="{{$personal_information->membership_id}}">
+                 
                     </div>
                     <!-- /.card-body -->
                   </div>

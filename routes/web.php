@@ -137,4 +137,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::any('/appoinment/info/delete/{id}', [UserEditController::class, 'appoinment_info_delete'])->name('admin.appoinment.info.delete');
         Route::any('/organization/info/delete/{id}', [UserEditController::class, 'organization_info_delete'])->name('admin.organization.info.delete');
         //user info delete End
-});
+
+        Route::any('/general/members', [DashboardController::class, 'general_member'])->name('general.member');
+        Route::any('/life/members', [DashboardController::class, 'life_member'])->name('life.member');
+        Route::any('/associate/members', [DashboardController::class, 'associate_member'])->name('associate.member');
+    });

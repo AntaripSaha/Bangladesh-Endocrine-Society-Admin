@@ -22,7 +22,8 @@
                           <thead>
                             <tr>
                               <th>ID</th>
-                              <th>Name of User's</th>
+                              <th>Name</th>
+                              <th>Member No.</th>
                               <th>Phone</th>
                               <th>Category</th>
                               <th>Trx ID</th>
@@ -41,6 +42,7 @@
                             <tr>
                               <td>{{$i}}</td>
                               <td style="width:250px">{{$user->name}}</td>
+                              <td style="widows:250px">{{$user->membership_id}}</td>
                               <td style="width:250px">{{$user->phone}}</td>
                               <td style="width:250px">{{$user->membership_category}}</td>
                               <td style="width:250px">{{$user->trx_id}}</td>

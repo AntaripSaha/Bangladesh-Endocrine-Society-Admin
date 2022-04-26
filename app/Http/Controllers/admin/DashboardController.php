@@ -22,12 +22,12 @@ use PDF;
 class DashboardController extends Controller
 {
     public function index(){
-       $users = DB::table('users')
+    $users = DB::table('users')
                     ->where('admin', 0)
                     ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
                     ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
                     ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
-                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone')
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone','personal__information.membership_id')
                     ->orderBy('id', 'desc')
                     ->paginate(5);
         return view('admin.dashboard',compact('users'));
@@ -73,12 +73,53 @@ class DashboardController extends Controller
                     ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
                     ->where('users.name', 'LIKE', '%'.$req->data.'%')
                     ->orWhere('personal__information.phone', 'LIKE', '%'.$req->data.'%')
+                    ->orWhere('payments__infos.membership_category', 'LIKE', '%'.$req->data.'%')
                     ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
-                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone')
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone','personal__information.membership_id')
                     ->orderBy('id', 'desc')
                     ->paginate(5);
         return view('admin.dashboard',compact('users'));
     }
+    public function general_member(Request $req){
+        $g_m = "General Member";
+        $users = DB::table('users')
+                    ->where('admin', 0)
+                    ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
+                    ->Where('payments__infos.membership_category', 'LIKE', '%'.$g_m.'%')
+                    ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone','personal__information.membership_id')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
+        return view('admin.dashboard',compact('users'));
+    }
+    public function life_member(Request $req){
+        $l_m = "Life Member";
+        $users = DB::table('users')
+                    ->where('admin', 0)
+                    ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
+                    ->Where('payments__infos.membership_category', 'LIKE', '%'.$l_m.'%')
+                    ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone','personal__information.membership_id')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
+        return view('admin.dashboard',compact('users'));
+    }
+    public function associate_member(Request $req){
+         $a_m = "Associate Member";
+        $users = DB::table('users')
+                    ->where('admin', 0)
+                    ->leftJoin('payments__infos', 'users.id', '=', 'payments__infos.user_id')
+                    ->leftJoin('personal__information', 'users.id', '=', 'personal__information.user_id')
+                    ->Where('payments__infos.membership_category', 'LIKE', '%'.$a_m.'%')
+                    ->select('users.*', 'payments__infos.membership_category', 'payments__infos.date',
+                        'payments__infos.trx_id', 'payments__infos.file', 'personal__information.phone','personal__information.membership_id')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
+        return view('admin.dashboard',compact('users'));
+    }
+    
     public function download($id){        
         $personal_information = Personal_Information::where('user_id', $id)->get();
         $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
@@ -107,4 +148,6 @@ class DashboardController extends Controller
         return $pdf->stream('members_information.pdf');
     }
 }
+
+
 
