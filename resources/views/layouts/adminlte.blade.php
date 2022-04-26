@@ -13,10 +13,19 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('backend/css/adminlte.min.css')}}">
   <style>
+   
+  @media screen and (max-width: 480px) {
+    .topright {
+      position: absolute !important;
+      top: 20% !important;
+      right: 5% !important;
+      font-size: 15px !important;
+    }
+  }
   .topright {
       position: absolute;
-      top: 8px;
-      right: 120px;
+      top: 12%;
+      right: 10%;
       font-size: 15px;
   }
   .color{
@@ -40,7 +49,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         {{-- <a href="#" class="nav-link">Home</a> --}}
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item" >
         <div class="dropdown show topright">
           <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ Auth::user()->name }}
