@@ -75,7 +75,7 @@
                     <input type="text" class="form-control" placeholder="phone" name="phone" required> 
                   </div>
                   <div class="col-5">
-                    <input type="text" class="form-control" placeholder="phone" name="tel"> 
+                    <input type="text" class="form-control" placeholder="secondary" name="tel"> 
                   </div>
                 </div>
           </div>

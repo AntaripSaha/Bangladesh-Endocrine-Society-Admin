@@ -51,7 +51,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
             </form>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('change.pass.admin')}}">
              Change Password
             </a>
           </div>

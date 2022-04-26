@@ -95,7 +95,7 @@
       <div style="margin-left:60%; margin-bottom:5%">
         {{-- <h3 class="info_title">Mother:</h3>
         <p class="information">{{$personal->mother_name}}</p> --}}
-        <h3 class="info_title">Tel:</h3>
+        <h3 class="info_title">Secondary:</h3>
         <p class="information">{{$personal->tel}}</p>
         <h3 class="info_title">NID:</h3>
         <p class="information">{{$personal->nid}}</p>

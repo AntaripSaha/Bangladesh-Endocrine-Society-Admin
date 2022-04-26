@@ -19,7 +19,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Tel</th>
+                            <th>Secondary</th>
                             <th>NID</th>
                             <th>Address</th>
                           </tr>

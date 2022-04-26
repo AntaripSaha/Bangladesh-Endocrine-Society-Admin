@@ -100,7 +100,7 @@
                                 <input type="text" class="form-control" placeholder="phone" name="phone" value="{{$personal_information->phone}}" required> 
                               </div>
                               <div class="col-5">
-                                <input type="text" class="form-control" placeholder="phone" name="tel"  value="{{$personal_information->tel}}"> 
+                                <input type="text" class="form-control" placeholder="secondary" name="tel"  value="{{$personal_information->tel}}"> 
                               </div>
                             </div>
                       </div>

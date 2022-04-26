@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\UserEditController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\user\DashboardController as UserDashboardController;
 use App\Http\Controllers\user\PermissionController;
 use App\Http\Controllers\user\UserListController;
@@ -33,6 +34,13 @@ Route::get('/', function(){
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
+
+//Change Password Start
+Route::get('change-password-admin', [ChangePasswordController::class, 'admin'])->name('change.pass.admin');
+Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change.pass');
+Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password');
+//Change Password End
+
 // Route::get('/adlogin', function(){
 //     return view('loginv2');
 // })->name('adlogin');
