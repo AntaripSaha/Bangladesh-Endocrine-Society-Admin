@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\user;
-
 use App\Http\Controllers\Controller;
 use App\Models\Essential_Category;
 use App\Models\Essential_Information;
