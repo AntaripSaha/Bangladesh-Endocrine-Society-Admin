@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Storage;
 class PermissionController extends Controller
 {
     public function permission(){
+
         $users = User::where('id', auth()->user()->id)->get();
         $payments = Payments_Info::where('user_id', $users[0]->id)->get();
         $personal = Personal_Information::where('user_id',auth()->user()->id)->select('permission')->first();
@@ -29,11 +30,14 @@ class PermissionController extends Controller
         $organization = Current_Organization::where('user_id',auth()->user()->id)->select('permission')->first();
         $appoinment = Current_Appoinment::where('user_id',auth()->user()->id)->select('permission')->first();
         $area = User_Area_of_Interests::where('user_id',auth()->user()->id)->select('permission')->first();
+
         if($payments->isEmpty()){
+
             return redirect()->back()->with('error', 'Please Complete The Form First.');
         }else{
             return view('user.permission', compact('personal','essential_info','active','file','organization','appoinment','area'));
         }
+
     }
     public function permission_personal_store($value){
         // return $value;

@@ -128,7 +128,15 @@
                 All Members
               </p>
             </a>
-          </li>    
+          </li>
+          <li>
+            <a href="{{url('https://invoice.sslcommerz.com/invoice-form?&refer=5FDAF50CDB5B7')}}" target="_blank" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>
+                Pay Now
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

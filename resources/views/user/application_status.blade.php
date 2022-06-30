@@ -18,13 +18,13 @@
                         <table class="table table-hover text-nowrap table-responsive">
                           <thead>
                             <tr>
-                              <th>ID</th>
+                              <th>S/L</th>
                               <th>Name</th>
                               <th>Member No.</th>
-                              <th>Category</th>
-                              <th>Trx ID</th>
-                              <th>Payment Date</th>
-                              <th>File</th>
+                              {{-- <th>Category</th> --}}
+                              {{-- <th>Trx ID</th> --}}
+                              {{-- <th>Payment Date</th> --}}
+                              {{-- <th>File</th> --}}
                               <th>Action</th>
                               <th>Status</th>
                             </tr>
@@ -37,18 +37,13 @@
                             <tr>
                               <td>{{$i}}</td>
                               <td style="width:250px">{{$user->name}}</td>
-                              <td style="width:250px">{{$personal_information->membership_id}}</td>
-                              <td style="width:250px">{{$payments[$key]->membership_category}}</td>
-                              <td style="width:250px">{{$payments[$key]->trx_id}}</td>
-                              <td style="width:250px">{{$payments[$key]->date}}</td>
-                              <td style="width:250px">
-                              {{-- <img src="{{asset($user->file)}}" height="130px" width="180px"> --}}
-                              @if($payments[$key]->file)
-                              <a href="{{asset($payments[$key]->file)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
+                              @if($personal_information->membership_id != null)
+                              <td style="width:250px">{{ $personal_information->membership_id }}</td >
                               @else
+                              <td style="width:250px; color:red">Not Given Yet</td >
                               @endif
-                           
-                              </td>
+                              
+                            
                               <td style="width:250px">
                               <a href="{{route('user.edit', ['id'=>$user->id])}}" class="btn btn-outline-info btn-sm" >Edit</a>                           
                               </td>

@@ -19,7 +19,12 @@ use Illuminate\Support\Facades\DB;
 class UserListController extends Controller
 {
     public function application_status(){
-        $personal_information = Personal_Information::where('id', auth()->user()->id)->select('membership_id')->first();
+        $personal_information = Personal_Information::where('user_id', auth()->user()->id)->select('membership_id')->first();
+        if(is_null($personal_information)){
+            $personal_information = 'Not Given';
+        }else{
+            $personal_information = Personal_Information::where('user_id', auth()->user()->id)->select('membership_id')->first();
+        }
         $users = User::where('id', auth()->user()->id)->get();
         $payments = Payments_Info::where('user_id', $users[0]->id)->get();
         if($payments->isEmpty()){

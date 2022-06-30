@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\user;
+
 use App\Http\Controllers\Controller;
 use App\Models\Essential_Category;
 use App\Models\Essential_Information;
@@ -158,24 +160,26 @@ class DashboardController extends Controller
             $file_upload->active_perticipation =  "storage/file/" . $file->hashName();
         }
         if($file_upload->save()){
-            return redirect()->route('payment')->with('success', 'All Data Saved Successfully.');
+            $payments_infos = new Payments_Info;
+            $payments_infos->membership_category = 'Members'; 
+            $payments_infos->date = 0; 
+            $payments_infos->phone = 0; 
+            $payments_infos->trx_id = 0; 
+            $payments_infos->file = 0; 
+            $payments_infos->user_id = auth()->user()->id;
+            $payments_infos->save();
+            return redirect()->route('area')->with('success', 'All Data Saved Successfully.');
         }
     }
     public function payment(){
         return view('user.payment');
     }
     public function payment_store(Request $req){
-        $req->validate(
-            [
-                'user_id' => 'required|unique:payments__infos,user_id'
-            ],[
-                'user_id.required' => 'User Already Exists'
-            ]);
         $payments_infos = new Payments_Info;
-        $payments_infos->membership_category = $req->checkbox; 
-        $payments_infos->date = $req->date; 
-        $payments_infos->phone = $req->phone; 
-        $payments_infos->trx_id = $req->trx_id; 
+        $payments_infos->membership_category = 'Members'; 
+        $payments_infos->date = 0; 
+        $payments_infos->phone = 0; 
+        $payments_infos->trx_id = 0; 
         $payments_infos->user_id = auth()->user()->id;
         if($req->file('file')){
             $file = $req->file('file');

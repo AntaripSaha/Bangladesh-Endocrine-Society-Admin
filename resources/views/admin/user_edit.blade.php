@@ -384,7 +384,13 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-
+                      <label for="membership_category">Select Membership Category</label>
+                      <select name="membership_category" class="form-control" id="" style="margin-bottom:5px;">
+                        <option value="Life Member">Life Member</option>
+                        <option value="General Member">General Member</option>
+                        <option value="Associate Member">Associate Member</option>
+                      </select>
+                      <label for="membership_id">Select Membership ID</label>
                       <input type="text" class="form-control" name="membership_id" value="{{$personal_information->membership_id}}">
                  
                     </div>

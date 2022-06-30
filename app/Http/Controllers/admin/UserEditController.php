@@ -36,7 +36,11 @@ class UserEditController extends Controller
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
     public function update_store(Request $req){
-        
+
+        $user_id = Personal_Information::where('id',$req->personal_info_id)->pluck('user_id');
+        Payments_Info::where('user_id',$user_id[0]) ->update([
+            'membership_category'=>$req->membership_category
+        ]);
         if($req->file('image')){
             $image = $req->file('image');
             Storage::putFile('public/personal_image', $image);
@@ -105,7 +109,6 @@ class UserEditController extends Controller
                                         ]);
             }  
         }
-                                      
         return redirect()->back()->with('success', 'Updated Successfully');                      
     }
     public function essential_info_delete($id){
