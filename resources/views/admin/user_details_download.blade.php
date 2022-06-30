@@ -148,7 +148,7 @@
     </table>
   </div>
   <!-- Essential Information End -->
-  <!-- Current Appoinment Start -->
+  {{-- <!-- Payment Appoinment Start -->
   <div style="page-break-inside: avoid">
     <h4 class="payment_heading">Payment Information</h4>
     <table border='0px' style="text-align:center; width: 100%;">
@@ -178,7 +178,7 @@
       </tbody>
     </table>
   </div>
-  <!-- Current Appoinment End -->
+  <!-- Payment Appoinment End --> --}}
   <!-- Current Appoinment Start -->
   <div style="page-break-inside: avoid">
     <h4 class="current_heading">Current Appoinments</h4>

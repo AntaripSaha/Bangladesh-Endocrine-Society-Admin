@@ -385,11 +385,21 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                       <label for="membership_category">Select Membership Category</label>
+                      @if($payment_information[0]->membership_category)
+                      <select name="membership_category" class="form-control" id="" style="margin-bottom:5px;">
+                        <option value="{{$payment_information[0]->membership_category}}" selected>{{$payment_information[0]->membership_category}}</option>
+                        <option value="Life Member">Life Member</option>
+                        <option value="General Member">General Member</option>
+                        <option value="Associate Member">Associate Member</option>
+                      </select>
+                      @else
                       <select name="membership_category" class="form-control" id="" style="margin-bottom:5px;">
                         <option value="Life Member">Life Member</option>
                         <option value="General Member">General Member</option>
                         <option value="Associate Member">Associate Member</option>
                       </select>
+                      @endif
+
                       <label for="membership_id">Select Membership ID</label>
                       <input type="text" class="form-control" name="membership_id" value="{{$personal_information->membership_id}}">
                  

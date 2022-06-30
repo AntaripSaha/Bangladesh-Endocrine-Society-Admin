@@ -21,18 +21,20 @@ use Illuminate\Support\Facades\Storage;
 class UserEditController extends Controller
 {
     public function update($id){
+              
         $personal_information = Personal_Information::where('user_id', $id)->first();        
         $essential_informations = Essential_Information::where('user_id', $id)->where('deleted', 0)->get();
         $associate_members = Associate_Member::where('user_id', $id)->where('deleted', 0)->get();
         $current_organizations = Current_Organization::where('user_id', $id)->where('deleted', 0)->get();
         $current_appoinments = Current_Appoinment::where('user_id', $id)->where('deleted', 0)->get();
         $area_id = User_Area_of_Interests::where('user_id', $id)->get();
-        $area_name = [];
+         $payment_information = Payments_Info::where('user_id', $id)->select('membership_category')->get();
+       $area_name = [];
         foreach($area_id as $key=>$id){
             $area_of_interests = Area_Category::where('id', $area_id[$key]->area_id)->get();
             array_push($area_name,  $area_of_interests);
         }
-        return view('admin.user_edit', compact('personal_information', 'essential_informations', 
+        return view('admin.user_edit', compact('payment_information','personal_information', 'essential_informations', 
         'associate_members', 'current_organizations', 'current_appoinments', 'area_name'));
     }
     public function update_store(Request $req){

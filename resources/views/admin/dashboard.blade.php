@@ -26,9 +26,9 @@
                               <th>Member No.</th>
                               <th>Phone</th>
                               <th>Category</th>
-                              <th>Trx ID</th>
-                              <th>Payment Date</th>
-                              <th>File</th>
+                              {{-- <th>Trx ID</th> --}}
+                              {{-- <th>Payment Date</th> --}}
+                              {{-- <th>File</th> --}}
                               <th>Status</th>
                               <th>View</th>
                               <th>Edit</th>
@@ -45,15 +45,9 @@
                               <td style="widows:250px">{{$user->membership_id}}</td>
                               <td style="width:250px">{{$user->phone}}</td>
                               <td style="width:250px">{{$user->membership_category}}</td>
-                              <td style="width:250px">{{$user->trx_id}}</td>
-                              <td style="width:250px">{{$user->date}}</td>
-                              <td style="width:250px">
-                              {{-- <img src="{{asset($user->file)}}" height="130px" width="180px"> --}}
-                              @if($user->file)
-                              <a href="{{asset($user->file)}}" class="btn btn-outline-secondary btn-sm" >Download</a>
-                              @else
-                              @endif
-                              </td>
+                              {{-- <td style="width:250px">{{$user->trx_id}}</td> --}}
+                              {{-- <td style="width:250px">{{$user->date}}</td> --}}
+                            
                               <td style="width:250px">
                               <!-- Example single danger button -->
                               <div class="btn-group">
